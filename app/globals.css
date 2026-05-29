@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-abyss-950: #03111f;
+  --color-abyss-900: #06192c;
+  --color-abyss-800: #0a2540;
+  --color-abyss-700: #0e3354;
+  --color-ocean-600: #0b6e8f;
+  --color-ocean-500: #0e8bb0;
+  --color-ocean-400: #22a7c9;
+  --color-ocean-300: #57c6e0;
+  --color-foam-200: #b8ecf7;
+  --color-foam-100: #e3f7fc;
+  --color-coral-500: #ff7a59;
+  --color-coral-400: #ff9777;
+  --color-gold-400: #f5b942;
+
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-shimmer: shimmer 2.4s linear infinite;
+  --animate-drift: drift 26s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+
+@keyframes drift {
+  from { transform: translateX(-10%); }
+  to { transform: translateX(110%); }
+}
+
+:root {
+  --bg: #eef6fb;
+  --surface: #ffffff;
+  --text: #07243b;
+  --muted: #4a6781;
+  --border: rgba(10, 37, 64, 0.1);
+}
+
+.dark {
+  --bg: #03111f;
+  --surface: #06192c;
+  --text: #e3f7fc;
+  --muted: #8fb3c9;
+  --border: rgba(87, 198, 224, 0.14);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.5s ease, color 0.4s ease;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.bg-surface {
+  background-color: var(--surface);
+}
+
+/* Glass card */
+.glass {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+}
+
+/* Animated gradient text */
+.gradient-text {
+  background: linear-gradient(110deg, var(--color-ocean-400), var(--color-foam-200), var(--color-coral-400), var(--color-ocean-400));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-shimmer);
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Grid texture */
+.grid-texture {
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-ocean-500) 55%, transparent);
+  border-radius: 999px;
+}
