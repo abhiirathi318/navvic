@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Product } from "@/lib/products";
+import BrandLogo from "./BrandLogo";
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
@@ -20,14 +20,9 @@ export default function ProductCard({ product }: { product: Product }) {
         className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[var(--border)] bg-surface transition-all hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ocean-600/15"
       >
         <div className="relative aspect-[4/3] overflow-hidden">
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60" />
+          <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+            <BrandLogo brand={product.brand} accent={product.accent} />
+          </div>
           <span className="absolute left-3 top-3 rounded-full bg-black/40 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
             {product.originFlag} {product.origin}
           </span>
@@ -48,14 +43,11 @@ export default function ProductCard({ product }: { product: Product }) {
           <p className="mt-2 line-clamp-2 text-sm text-muted">{product.blurb}</p>
 
           <div className="mt-auto flex items-end justify-between pt-5">
-            <div>
-              <div className="font-display text-2xl font-extrabold">${product.price.toFixed(2)}</div>
-              <div className="text-xs text-muted">{product.unit}</div>
+            <div className="text-xs text-muted">
+              <div className="font-semibold text-[var(--text)]">MOQ {product.moq}</div>
+              <div>Lead time {product.leadTime}</div>
             </div>
-            <div className="text-right text-xs text-muted">
-              <div>MOQ {product.moq}</div>
-              <div>{product.leadTime}</div>
-            </div>
+            <span className="text-xs font-semibold text-ocean-400">View details →</span>
           </div>
         </div>
       </Link>
