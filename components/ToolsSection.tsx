@@ -19,8 +19,9 @@ export default function ToolsSection() {
                 Free tools for smarter shipping.
               </h2>
               <p className="mt-4 max-w-xl text-muted">
-                Practical utilities for importers and exporters — starting with an AI HS-code
-                classifier that turns plain English into tariff codes.
+                A connected toolkit for importers and exporters — classify HS codes, estimate landed
+                cost, check compliance, pick Incoterms, generate documents and plan freight. Each
+                tool flows into the next.
               </p>
             </div>
             <Link
@@ -32,7 +33,7 @@ export default function ToolsSection() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((t, i) => (
             <Reveal key={t.slug} delay={i * 0.06}>
               <ToolCard tool={t} />

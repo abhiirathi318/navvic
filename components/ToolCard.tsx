@@ -1,10 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { ScanSearch, Calculator, Container, FileText, ArrowUpRight } from "lucide-react";
-import type { Tool } from "@/lib/tools";
+import {
+  ScanSearch,
+  Calculator,
+  ShieldCheck,
+  Scale,
+  FileText,
+  Container,
+  ArrowUpRight,
+} from "lucide-react";
+import type { Tool, ToolIcon } from "@/lib/tools";
 
-const icons = { ScanSearch, Calculator, Container, FileText };
+const icons: Record<ToolIcon, typeof ScanSearch> = {
+  ScanSearch,
+  Calculator,
+  ShieldCheck,
+  Scale,
+  FileText,
+  Container,
+};
 
 export default function ToolCard({ tool }: { tool: Tool }) {
   const Icon = icons[tool.icon];
@@ -13,7 +28,9 @@ export default function ToolCard({ tool }: { tool: Tool }) {
   const inner = (
     <div
       className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[var(--border)] bg-surface p-6 transition-all ${
-        live ? "hover:-translate-y-1.5 hover:border-ocean-400/40 hover:shadow-2xl hover:shadow-ocean-600/10" : "opacity-80"
+        live
+          ? "hover:-translate-y-1.5 hover:border-ocean-400/40 hover:shadow-2xl hover:shadow-ocean-600/10"
+          : "opacity-80"
       }`}
     >
       <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-ocean-400/10 blur-2xl" />
@@ -23,7 +40,7 @@ export default function ToolCard({ tool }: { tool: Tool }) {
         </span>
         {live ? (
           <span className="flex items-center gap-1.5 rounded-full bg-ocean-400/15 px-2.5 py-1 text-xs font-bold text-ocean-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-ocean-400" /> Live
+            <span className="h-1.5 w-1.5 rounded-full bg-ocean-400" /> Free
           </span>
         ) : (
           <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs font-semibold text-muted">
@@ -33,15 +50,27 @@ export default function ToolCard({ tool }: { tool: Tool }) {
       </div>
 
       <div className="mt-5">
-        <div className="text-xs font-bold uppercase tracking-wider text-ocean-400">{tool.tagline}</div>
-        <h3 className="font-display mt-1 text-xl font-bold">{tool.name}</h3>
+        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ocean-400">
+          <span className="flex h-5 w-5 items-center justify-center rounded-md bg-ocean-400/15 text-[10px]">
+            {tool.step}
+          </span>
+          {tool.tagline}
+        </div>
+        <h3 className="font-display mt-1.5 text-xl font-bold">{tool.name}</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted">{tool.description}</p>
+        <div className="mt-3 rounded-xl border border-[var(--border)] bg-ocean-400/5 px-3 py-2 text-xs leading-relaxed text-muted">
+          <span className="font-semibold text-ocean-400">Why it helps · </span>
+          {tool.business}
+        </div>
       </div>
 
       {live && (
         <div className="mt-auto flex items-center gap-1.5 pt-5 text-sm font-semibold text-ocean-400">
           Open tool
-          <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <ArrowUpRight
+            size={16}
+            className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
         </div>
       )}
     </div>

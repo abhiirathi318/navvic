@@ -15,6 +15,7 @@ import {
   Check,
   Copy,
 } from "lucide-react";
+import NextSteps from "./NextSteps";
 
 type Question = { id: string; question: string; why?: string; options: string[] };
 type CodeLevel = { code: string; title: string };
@@ -322,12 +323,21 @@ export default function HsCodeTool() {
       {/* classification tree */}
       <AnimatePresence>
         {result?.status === "classified" && result.classification && !loading && (
-          <ClassificationTree
-            key={result.classification.recommended_hs6}
-            product={result.product}
-            country={result.country}
-            data={result.classification}
-          />
+          <div key={result.classification.recommended_hs6}>
+            <ClassificationTree
+              product={result.product}
+              country={result.country}
+              data={result.classification}
+            />
+            <NextSteps
+              from="hs-code"
+              context={{
+                hs: result.classification.recommended_hs6,
+                product: result.product,
+                country: result.country,
+              }}
+            />
+          </div>
         )}
       </AnimatePresence>
     </div>
