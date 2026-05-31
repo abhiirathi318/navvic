@@ -3,7 +3,7 @@
 > Navvic is an end-to-end import & export and logistics company. We source premium FMCG brands and move them across the world by ocean and air, handling sourcing, freight, customs clearance and warehousing across 40+ countries. We also publish a free, connected suite of trade tools for importers and exporters.
 
 ## What Navvic does
-- Import & export of premium FMCG brands (chocolate, pasta, snacks, beverages, pantry, confectionery)
+- Import & export of premium brands across four verticals: FMCG (chocolate, pasta, snacks, beverages, pantry, confectionery), Furniture, Medical Equipment and Electronics
 - Ocean freight (FCL & LCL) and air freight
 - Customs clearance and trade documentation
 - Cross-border supply-chain and warehousing across 40+ countries

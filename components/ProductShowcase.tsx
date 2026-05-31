@@ -21,11 +21,11 @@ export default function ProductShowcase() {
           Featured catalog
         </span>
         <h2 className="font-display mt-2 max-w-2xl text-4xl font-extrabold tracking-tight sm:text-5xl">
-          Premium FMCG brands, ready to ship.
+          Premium brands, ready to ship.
         </h2>
         <p className="mt-4 max-w-2xl text-muted">
-          A curated selection of the most-loved European and North American brands, fully traceable,
-          certified, and priced for container-scale distribution.
+          A curated selection across FMCG, furniture, medical equipment and electronics — fully
+          traceable, certified, and priced for container-scale distribution.
         </p>
       </Reveal>
 

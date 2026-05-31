@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Anchor, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
-import NavvicMark from "./NavvicMark";
 
 const links = [
   { href: "/#services", label: "Logistics" },
@@ -39,7 +38,7 @@ export default function Navbar() {
         >
           <Link href="/" className="group flex items-center gap-2.5">
             <span className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-ocean-400 to-abyss-800 text-white shadow-lg">
-              <NavvicMark size={22} className="transition-transform group-hover:-translate-y-0.5" />
+              <Anchor size={20} className="transition-transform group-hover:-rotate-12" />
             </span>
             <span className="font-display text-xl font-extrabold tracking-tight">
               Nav<span className="text-ocean-400">vic</span>

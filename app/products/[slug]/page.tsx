@@ -84,7 +84,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   className="absolute left-4 top-4 rounded-full px-4 py-1.5 text-sm font-bold text-white shadow"
                   style={{ backgroundColor: product.accent }}
                 >
-                  {product.category}
+                  {product.subcategory}
                 </span>
               </div>
             </Reveal>

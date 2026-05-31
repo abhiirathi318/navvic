@@ -36,12 +36,19 @@ export default function OpengraphImage() {
               boxShadow: "0 20px 60px rgba(34,167,201,0.4)",
             }}
           >
-            <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
-              <rect x="13" y="22" width="38" height="20" rx="3" stroke="#ffffff" strokeWidth="3.4" />
-              <line x1="22" y1="27.5" x2="22" y2="36.5" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-              <line x1="29" y1="27.5" x2="29" y2="36.5" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-              <line x1="35" y1="27.5" x2="35" y2="36.5" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-              <line x1="42" y1="27.5" x2="42" y2="36.5" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
+            <svg
+              width="52"
+              height="52"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="5" r="3" />
+              <line x1="12" y1="22" x2="12" y2="8" />
+              <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
             </svg>
           </div>
           <div style={{ display: "flex", fontSize: 64, fontWeight: 800, letterSpacing: -1 }}>

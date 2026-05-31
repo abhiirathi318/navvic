@@ -31,17 +31,6 @@ export default function Hero() {
         animate="show"
         className="mx-auto w-full max-w-7xl px-4 pb-40 pt-32 sm:px-6"
       >
-        <motion.div
-          variants={item}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-ocean-400/30 bg-ocean-400/10 px-4 py-1.5 text-sm font-medium text-ocean-400 backdrop-blur"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ocean-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-ocean-400" />
-          </span>
-          Global FMCG sourcing & ocean freight
-        </motion.div>
-
         <motion.h1
           variants={item}
           className="font-display max-w-4xl text-5xl font-extrabold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl"
@@ -50,8 +39,9 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p variants={item} className="mt-6 max-w-2xl text-lg text-muted">
-          Navvic is your end-to-end import &amp; export partner, sourcing premium FMCG products
-          from Europe, the US and Canada and delivering them container-by-container to your shelves.
+          Navvic is your end-to-end import &amp; export partner, sourcing premium brands across FMCG,
+          furniture, medical equipment and electronics — and delivering them container-by-container
+          to your shelves.
         </motion.p>
 
         <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
