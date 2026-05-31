@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Navvic — Logo Concepts</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      :root {
+        --ocean-400: #22a7c9;
+        --ocean-500: #0e8bb0;
+        --ocean-600: #0b6e8f;
+        --abyss-800: #0a2540;
+        --abyss-900: #06192c;
+        --foam: #e3f7fc;
+        --coral: #ff7a59;
+        --gold: #f5b942;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+        background: #f1f6fb;
+        color: var(--abyss-900);
+        padding: 56px 48px 64px;
+      }
+      h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; }
+      .sub { color: #5b7185; font-size: 15px; margin-top: 8px; }
+      .grid {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #e2ebf2;
+        border-radius: 24px;
+        padding: 30px 32px;
+        box-shadow: 0 18px 50px rgba(10, 37, 64, 0.06);
+      }
+      .num {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        color: var(--ocean-500);
+        text-transform: uppercase;
+      }
+      .name { font-size: 20px; font-weight: 800; margin-top: 4px; }
+      .desc { font-size: 13.5px; color: #5b7185; margin-top: 6px; line-height: 1.5; min-height: 40px; }
+
+      .lockup { display: flex; align-items: center; gap: 18px; margin-top: 22px; }
+      .chip {
+        width: 86px; height: 86px; flex: 0 0 86px;
+        border-radius: 22px;
+        display: flex; align-items: center; justify-content: center;
+        background:
+          radial-gradient(circle at 30% 18%, rgba(255,255,255,0.28), transparent 55%),
+          linear-gradient(145deg, var(--ocean-400), var(--abyss-800));
+        box-shadow: 0 14px 32px rgba(34, 167, 201, 0.32);
+      }
+      .wordmark { font-size: 38px; font-weight: 800; letter-spacing: -1px; }
+      .wordmark .v { color: var(--ocean-500); }
+
+      /* mono + favicon previews */
+      .previews { display: flex; align-items: center; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px dashed #e2ebf2; }
+      .pv { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+      .pv span { font-size: 10.5px; color: #8aa0b2; font-weight: 600; letter-spacing: 0.3px; }
+      .mono {
+        width: 52px; height: 52px; border-radius: 14px;
+        display: flex; align-items: center; justify-content: center;
+        background: var(--abyss-900);
+      }
+      .fav {
+        width: 32px; height: 32px; border-radius: 9px;
+        display: flex; align-items: center; justify-content: center;
+        background: linear-gradient(145deg, var(--ocean-400), var(--abyss-800));
+      }
+      .ondark {
+        width: 52px; height: 52px; border-radius: 14px;
+        display: flex; align-items: center; justify-content: center;
+        background: var(--ocean-400);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Navvic — logo concepts</h1>
+    <div class="sub">Six directions. Each shown as the app chip + wordmark, then on a dark tile, a solid-ocean tile, and at favicon size. Pick one and I'll finalize it across the site and business cards.</div>
+
+    <div class="grid">
+      <!-- 01 COMPASS ROSE -->
+      <div class="card">
+        <div class="num">01 — Navigation</div>
+        <div class="name">Compass Rose</div>
+        <div class="desc">A sharp compass star — the universal mark of navigation and global trade. Confident, premium, instantly logistics.</div>
+        <div class="lockup">
+          <div class="chip">__C_WHITE__</div>
+          <div class="wordmark">Nav<span class="v">vic</span></div>
+        </div>
+        <div class="previews">
+          <div class="pv"><div class="mono">__C_OCEAN__</div><span>dark</span></div>
+          <div class="pv"><div class="ondark">__C_DARK__</div><span>solid</span></div>
+          <div class="pv"><div class="fav">__C_FAV__</div><span>favicon</span></div>
+        </div>
+      </div>
+
+      <!-- 02 DOUBLE CHEVRON WAVE -->
+      <div class="card">
+        <div class="num">02 — The "vv"</div>
+        <div class="name">Wave Chevrons</div>
+        <div class="desc">The double-v of Na<b>vv</b>ic rendered as two cresting waves / forward chevrons — motion, momentum and the ocean in one geometric mark.</div>
+        <div class="lockup">
+          <div class="chip">__W_WHITE__</div>
+          <div class="wordmark">Nav<span class="v">vic</span></div>
+        </div>
+        <div class="previews">
+          <div class="pv"><div class="mono">__W_OCEAN__</div><span>dark</span></div>
+          <div class="pv"><div class="ondark">__W_DARK__</div><span>solid</span></div>
+          <div class="pv"><div class="fav">__W_FAV__</div><span>favicon</span></div>
+        </div>
+      </div>
+
+      <!-- 03 ROUTE N -->
+      <div class="card">
+        <div class="num">03 — The letter</div>
+        <div class="name">Route "N"</div>
+        <div class="desc">A monogram N built from a shipping route, with port nodes at each end. Reads as a clean N and a point-to-point trade lane at once.</div>
+        <div class="lockup">
+          <div class="chip">__N_WHITE__</div>
+          <div class="wordmark">Nav<span class="v">vic</span></div>
+        </div>
+        <div class="previews">
+          <div class="pv"><div class="mono">__N_OCEAN__</div><span>dark</span></div>
+          <div class="pv"><div class="ondark">__N_DARK__</div><span>solid</span></div>
+          <div class="pv"><div class="fav">__N_FAV__</div><span>favicon</span></div>
+        </div>
+      </div>
+
+      <!-- 04 GLOBE ROUTE -->
+      <div class="card">
+        <div class="num">04 — Global</div>
+        <div class="name">Globe & Route</div>
+        <div class="desc">A globe crossed by an orbiting trade route and a single port node — worldwide reach, 40+ countries, import &amp; export in motion.</div>
+        <div class="lockup">
+          <div class="chip">__G_WHITE__</div>
+          <div class="wordmark">Nav<span class="v">vic</span></div>
+        </div>
+        <div class="previews">
+          <div class="pv"><div class="mono">__G_OCEAN__</div><span>dark</span></div>
+          <div class="pv"><div class="ondark">__G_DARK__</div><span>solid</span></div>
+          <div class="pv"><div class="fav">__G_FAV__</div><span>favicon</span></div>
+        </div>
+      </div>
+
+      <!-- 05 PAPER BOAT -->
+      <div class="card">
+        <div class="num">05 — Ocean</div>
+        <div class="name">Origami Vessel</div>
+        <div class="desc">A minimal origami boat riding a wave. Friendly and distinctive, it nods to ocean freight without the cliché of a literal cargo ship.</div>
+        <div class="lockup">
+          <div class="chip">__B_WHITE__</div>
+          <div class="wordmark">Nav<span class="v">vic</span></div>
+        </div>
+        <div class="previews">
+          <div class="pv"><div class="mono">__B_OCEAN__</div><span>dark</span></div>
+          <div class="pv"><div class="ondark">__B_DARK__</div><span>solid</span></div>
+          <div class="pv"><div class="fav">__B_FAV__</div><span>favicon</span></div>
+        </div>
+      </div>
+
+      <!-- 06 ANCHOR REFINED -->
+      <div class="card">
+        <div class="num">06 — Heritage</div>
+        <div class="name">Refined Anchor</div>
+        <div class="desc">A premium, geometric take on the anchor you have now — same maritime DNA, but balanced, modern and built on a precise grid.</div>
+        <div class="lockup">
+          <div class="chip">__A_WHITE__</div>
+          <div class="wordmark">Nav<span class="v">vic</span></div>
+        </div>
+        <div class="previews">
+          <div class="pv"><div class="mono">__A_OCEAN__</div><span>dark</span></div>
+          <div class="pv"><div class="ondark">__A_DARK__</div><span>solid</span></div>
+          <div class="pv"><div class="fav">__A_FAV__</div><span>favicon</span></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

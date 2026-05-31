@@ -37,18 +37,18 @@ export default function OpengraphImage() {
             }}
           >
             <svg
-              width="52"
-              height="52"
-              viewBox="0 0 24 24"
+              width="56"
+              height="56"
+              viewBox="0 0 64 64"
               fill="none"
               stroke="#ffffff"
-              strokeWidth="2"
+              strokeWidth="4.6"
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <circle cx="12" cy="5" r="3" />
-              <line x1="12" y1="22" x2="12" y2="8" />
-              <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
+              <path d="M16 27 L32 17 L48 27" />
+              <path d="M16 38 L32 28 L48 38" />
+              <path d="M16 49 L32 39 L48 49" />
             </svg>
           </div>
           <div style={{ display: "flex", fontSize: 64, fontWeight: 800, letterSpacing: -1 }}>
