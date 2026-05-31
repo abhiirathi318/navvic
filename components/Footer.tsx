@@ -24,7 +24,15 @@ export default function Footer() {
           title="Company"
           links={["About", "Trade lanes", "Sustainability", "Careers"]}
         />
-        <FooterCol title="Support" links={["Request quote", "Track shipment", "Documentation", "Contact"]} />
+        <FooterCol
+          title="Support"
+          links={[
+            { label: "Request quote", href: "/#quote" },
+            { label: "Track shipment", href: "mailto:support@navvic.com?subject=Track%20shipment" },
+            { label: "Documentation", href: "/tools/docs" },
+            { label: "support@navvic.com", href: "mailto:support@navvic.com" },
+          ]}
+        />
       </div>
       <div className="border-t border-[var(--border)] px-4 py-6 sm:px-6">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 text-sm text-muted sm:flex-row">
@@ -36,15 +44,23 @@ export default function Footer() {
   );
 }
 
-function FooterCol({ title, links }: { title: string; links: string[] }) {
+function FooterCol({
+  title,
+  links,
+}: {
+  title: string;
+  links: string[] | { label: string; href: string }[];
+}) {
+  const items = links.map((l) => (typeof l === "string" ? { label: l, href: "#" } : l));
+
   return (
     <div>
       <h4 className="font-display font-bold">{title}</h4>
       <ul className="mt-4 space-y-2.5 text-sm text-muted">
-        {links.map((l) => (
-          <li key={l}>
-            <a href="#" className="transition-colors hover:text-ocean-400">
-              {l}
+        {items.map(({ label, href }) => (
+          <li key={label}>
+            <a href={href} className="transition-colors hover:text-ocean-400">
+              {label}
             </a>
           </li>
         ))}

@@ -1,12 +1,70 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import Reveal from "./Reveal";
 
+type FormState = {
+  company: string;
+  email: string;
+  destinationPort: string;
+  sourcing: string;
+};
+
+const emptyForm: FormState = {
+  company: "",
+  email: "",
+  destinationPort: "",
+  sourcing: "",
+};
+
 export default function QuoteCTA() {
+  const [form, setForm] = useState<FormState>(emptyForm);
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get("product");
+    if (product) {
+      setForm((prev) => ({
+        ...prev,
+        sourcing: prev.sourcing || `Quote request for: ${product}`,
+      }));
+    }
+  }, []);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = (await res.json()) as { error?: string };
+
+      if (!res.ok) {
+        throw new Error(data.error ?? "Something went wrong. Please try again.");
+      }
+
+      setSent(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
+    setForm((prev) => ({ ...prev, [key]: value }));
+  }
 
   return (
     <section id="quote" className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6">
@@ -29,6 +87,12 @@ export default function QuoteCTA() {
                 <div>🚢 FCL &amp; LCL options on every lane</div>
                 <div>📄 Full customs documentation included</div>
               </div>
+              <p className="mt-8 text-sm text-foam-200/60">
+                Prefer email?{" "}
+                <a href="mailto:support@navvic.com" className="text-ocean-300 hover:underline">
+                  support@navvic.com
+                </a>
+              </p>
             </div>
 
             {sent ? (
@@ -42,33 +106,63 @@ export default function QuoteCTA() {
                 <p className="mt-2 text-foam-200/80">Our trade desk will reach out within one business day.</p>
               </motion.div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-                className="grid gap-4 rounded-3xl bg-white/5 p-6 backdrop-blur sm:p-8"
-              >
+              <form onSubmit={handleSubmit} className="grid gap-4 rounded-3xl bg-white/5 p-6 backdrop-blur sm:p-8">
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <Field label="Company" placeholder="Acme Distribution" />
-                  <Field label="Email" type="email" placeholder="you@company.com" />
+                  <Field
+                    label="Company"
+                    placeholder="Acme Distribution"
+                    value={form.company}
+                    onChange={(v) => updateField("company", v)}
+                  />
+                  <Field
+                    label="Email"
+                    type="email"
+                    placeholder="you@company.com"
+                    value={form.email}
+                    onChange={(v) => updateField("email", v)}
+                  />
                 </div>
-                <Field label="Destination port" placeholder="Jebel Ali, Dubai" />
+                <Field
+                  label="Destination port"
+                  placeholder="Jebel Ali, Dubai"
+                  value={form.destinationPort}
+                  onChange={(v) => updateField("destinationPort", v)}
+                />
                 <div className="grid gap-1.5">
                   <label className="text-sm font-medium text-foam-200/80">What are you sourcing?</label>
                   <textarea
                     required
                     rows={3}
+                    value={form.sourcing}
+                    onChange={(e) => updateField("sourcing", e.target.value)}
                     placeholder="e.g. 2 x 20ft of assorted chocolate & pasta"
                     className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-foam-100 placeholder:text-foam-200/40 outline-none transition focus:border-ocean-300/60"
                   />
                 </div>
+
+                {error && (
+                  <div className="flex items-start gap-2 rounded-xl border border-coral-500/30 bg-coral-500/10 px-4 py-3 text-sm text-coral-200">
+                    <AlertCircle size={18} className="mt-0.5 shrink-0" />
+                    <span>{error}</span>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="group mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-ocean-400 to-ocean-600 px-6 py-3.5 font-semibold text-white shadow-lg transition-transform hover:scale-[1.02]"
+                  disabled={submitting}
+                  className="group mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-ocean-400 to-ocean-600 px-6 py-3.5 font-semibold text-white shadow-lg transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
                 >
-                  Send request
-                  <Send size={17} className="transition-transform group-hover:translate-x-0.5" />
+                  {submitting ? (
+                    <>
+                      <Loader2 size={17} className="animate-spin" />
+                      Sending…
+                    </>
+                  ) : (
+                    <>
+                      Send request
+                      <Send size={17} className="transition-transform group-hover:translate-x-0.5" />
+                    </>
+                  )}
                 </button>
               </form>
             )}
@@ -83,10 +177,14 @@ function Field({
   label,
   type = "text",
   placeholder,
+  value,
+  onChange,
 }: {
   label: string;
   type?: string;
   placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
 }) {
   return (
     <div className="grid gap-1.5">
@@ -94,6 +192,8 @@ function Field({
       <input
         required
         type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-foam-100 placeholder:text-foam-200/40 outline-none transition focus:border-ocean-300/60"
       />

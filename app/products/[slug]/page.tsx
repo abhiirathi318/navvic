@@ -84,7 +84,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
 
               <Link
-                href="/#quote"
+                href={`/?product=${encodeURIComponent(product.name)}#quote`}
                 className="mt-9 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-ocean-500 to-ocean-600 px-7 py-4 font-semibold text-white shadow-xl shadow-ocean-600/30 transition-transform hover:scale-105"
               >
                 Request a quote for this SKU
