@@ -82,8 +82,13 @@
   .wave{ position:absolute; left:0; right:0; bottom:0; height:18mm; opacity:0; }
   .bar{ position:absolute; top:0; bottom:0; left:0; width:2.2mm; background:linear-gradient(var(--ocean-300),var(--ocean-600)); opacity:0; }
   .mono .mark{ width:4.6mm; height:4.6mm; }
-  .ship{ position:absolute; top:5mm; right:5.6mm; width:39mm; height:27mm; opacity:0; pointer-events:none; }
-  .c3 .card.front .ship{ opacity:1; }
+  .ship{ position:absolute; top:6mm; right:5.2mm; width:40mm; height:28mm; opacity:0; pointer-events:none; }
+  .card.front .ship{ opacity:1; }
+  /* soft halo so the vessel reads on the dark card */
+  .shipglow{ position:absolute; top:2mm; right:-4mm; width:46mm; height:34mm; border-radius:50%;
+             filter:blur(9mm); background:radial-gradient(closest-side, rgba(34,167,201,.20), transparent);
+             opacity:0; pointer-events:none; }
+  .c1 .card.front .shipglow{ opacity:1; }
 
   /* ============ CONCEPT 1 — ABYSS (dark) ============ */
   .c1 .card{ background:linear-gradient(150deg,var(--abyss-800),var(--abyss-950)); color:#eaf6fb; }
@@ -156,9 +161,9 @@ const ship = `<svg class="ship" viewBox="0 0 130 92" fill="none" preserveAspectR
   <circle cx="40" cy="20" r="3.4" fill="#9cc6da" opacity=".55"/>
   <circle cx="46" cy="13" r="4.6" fill="#9cc6da" opacity=".42"/>
   <circle cx="54" cy="7" r="6" fill="#9cc6da" opacity=".30"/>
-  <rect x="33" y="24" width="9" height="17" rx="2" fill="#0a2540"/>
+  <rect x="33" y="24" width="9" height="17" rx="2" fill="#15527e"/>
   <rect x="33" y="29" width="9" height="3.4" fill="#f9735c"/>
-  <rect x="17" y="29" width="13" height="14" rx="2" fill="#0e3354"/>
+  <rect x="17" y="29" width="13" height="14" rx="2" fill="#1a608f"/>
   <rect x="19.5" y="32" width="3" height="3" rx=".5" fill="#57c6e0"/>
   <rect x="24" y="32" width="3" height="3" rx=".5" fill="#57c6e0"/>
   <rect x="46" y="34" width="17" height="9" rx="1.6" fill="#22a7c9"/>
@@ -167,7 +172,7 @@ const ship = `<svg class="ship" viewBox="0 0 130 92" fill="none" preserveAspectR
   <rect x="50" y="25" width="17" height="9" rx="1.6" fill="#0b6e8f"/>
   <rect x="68" y="25" width="17" height="9" rx="1.6" fill="#f5a524"/>
   <rect x="59" y="16" width="17" height="9" rx="1.6" fill="#22a7c9"/>
-  <path d="M14 44 H106 L97 60 Q93 65 86 65 H34 Q27 65 23 60 Z" fill="#0a2540"/>
+  <path d="M14 44 H106 L97 60 Q93 65 86 65 H34 Q27 65 23 60 Z" fill="#15527e"/>
   <rect x="14" y="44" width="92" height="4.4" fill="#f9735c"/>
   <circle cx="40" cy="55" r="1.9" fill="#57c6e0"/>
   <circle cx="52" cy="55" r="1.9" fill="#57c6e0"/>
@@ -192,7 +197,7 @@ const concepts = [
 
 const front = (p) => `
   <div class="card front">
-    <div class="glow"></div>${ship}${wave}<div class="bar"></div>
+    <div class="glow"></div><div class="shipglow"></div>${ship}${wave}<div class="bar"></div>
     <div class="inner">
       <div class="brandrow">
         <span class="mono">${mark}</span>
