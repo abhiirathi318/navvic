@@ -1,0 +1,5 @@
+navvic-horizontal-ink|1600|520|transparent
+navvic-horizontal-white|1600|520|transparent
+navvic-stacked-ink|1000|920|transparent
+navvic-wordmark-ink|1200|360|transparent
+navvic-wordmark-white|1200|360|transparent

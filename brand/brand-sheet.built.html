@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/>
+<title>Navvic — Brand / Logo System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --ocean-400:#22a7c9; --ocean-500:#0e8bb0; --ocean-600:#0b6e8f;
+    --abyss-800:#0a2540; --abyss-900:#06192c; --abyss-950:#03111f;
+    --foam:#e3f7fc; --ink:#06192c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Plus Jakarta Sans',sans-serif;background:#eef4f9;color:var(--ink);
+       padding:60px 56px 72px;-webkit-font-smoothing:antialiased}
+  .head h1{font-size:40px;font-weight:800;letter-spacing:-.02em}
+  .head p{margin-top:8px;color:#5b7185;font-size:15px}
+  .grid{margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .card{background:#fff;border:1px solid #e2ebf2;border-radius:24px;padding:34px 36px;
+        box-shadow:0 18px 50px rgba(10,37,64,.06)}
+  .card.span{grid-column:1 / -1}
+  .lbl{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ocean-500)}
+  .cap{font-size:13px;color:#5b7185;margin-top:6px}
+  .wm{font-weight:800;letter-spacing:-.03em;line-height:1}
+  .wm i{font-style:normal;color:var(--ocean-400)}
+  .tag{font-weight:700;text-transform:uppercase;color:var(--ocean-400)}
+  .tile{display:block}
+  .tile svg{width:100%;height:100%;display:block}
+  .row{display:flex;align-items:center;gap:28px}
+  .center{display:flex;align-items:center;justify-content:center}
+  .dark{background:linear-gradient(150deg,var(--abyss-800),var(--abyss-950))}
+  .ocean{background:var(--ocean-400)}
+  /* mark finishes */
+  .marks{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px}
+  .mk{width:118px;height:118px;border-radius:22px;display:flex;align-items:center;justify-content:center}
+  .mk svg{width:118px;height:118px}
+  .mk.line{border:1px solid #e2ebf2}
+  .mkcap{font-size:11px;color:#8aa0b2;text-align:center;margin-top:8px;font-weight:600}
+  .mkwrap{display:flex;flex-direction:column;align-items:center}
+  /* palette */
+  .pal{display:flex;gap:0;margin-top:22px;border-radius:16px;overflow:hidden}
+  .sw{flex:1;height:96px;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;color:#fff;font-size:11px;font-weight:700}
+  .sw small{display:block;font-weight:500;opacity:.8}
+  /* clearspace */
+  .clear{margin-top:20px;display:inline-flex;align-items:center;gap:24px;border:1px dashed #c2d4e0;border-radius:16px;padding:26px}
+</style></head>
+<body>
+  <div class="head">
+    <h1>Navvic — logo system</h1>
+    <p>The Wave Chevrons mark: the double-<b>v</b> of Na<b>vv</b>ic as three cresting waves &amp; forward chevrons. Navigation, momentum and the open ocean in one geometric mark.</p>
+  </div>
+
+  <div class="grid">
+    <!-- Primary, light -->
+    <div class="card span">
+      <div class="lbl">Primary lockup</div>
+      <div class="cap">Horizontal — the default. Use on white / light surfaces.</div>
+      <div class="row center" style="padding:40px 0 14px">
+        <span class="tile" style="width:120px;height:120px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22a7c9"/>
+      <stop offset="1" stop-color="#0a2540"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 27 L32 17 L48 27"/>
+    <path d="M16 38 L32 28 L48 38"/>
+    <path d="M16 49 L32 39 L48 49"/>
+  </g>
+</svg></span>
+        <span class="wm" style="font-size:96px">Nav<i>vic</i></span>
+      </div>
+    </div>
+
+    <!-- Primary on dark -->
+    <div class="card dark">
+      <div class="lbl" style="color:#57c6e0">On dark / reversed</div>
+      <div class="cap" style="color:#8fb3c9">For navy, photography &amp; the app.</div>
+      <div class="row center" style="padding:34px 0 6px">
+        <span class="tile" style="width:96px;height:96px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22a7c9"/>
+      <stop offset="1" stop-color="#0a2540"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 27 L32 17 L48 27"/>
+    <path d="M16 38 L32 28 L48 38"/>
+    <path d="M16 49 L32 39 L48 49"/>
+  </g>
+</svg></span>
+        <span class="wm" style="font-size:74px;color:#fff">Nav<i>vic</i></span>
+      </div>
+    </div>
+
+    <!-- Stacked -->
+    <div class="card">
+      <div class="lbl">Stacked + tagline</div>
+      <div class="cap">For square spaces, stamps &amp; signage.</div>
+      <div class="center" style="flex-direction:column;gap:18px;padding:22px 0 8px">
+        <span class="tile" style="width:104px;height:104px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22a7c9"/>
+      <stop offset="1" stop-color="#0a2540"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 27 L32 17 L48 27"/>
+    <path d="M16 38 L32 28 L48 38"/>
+    <path d="M16 49 L32 39 L48 49"/>
+  </g>
+</svg></span>
+        <div class="center" style="flex-direction:column;gap:9px">
+          <span class="wm" style="font-size:58px">Nav<i>vic</i></span>
+          <span class="tag" style="font-size:14px;letter-spacing:.4em">Global Trade &amp; Logistics</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mark finishes -->
+    <div class="card span">
+      <div class="lbl">The mark — finishes</div>
+      <div class="cap">App icon &amp; favicon use the gradient tile. Mono versions for one-color print, stamps &amp; embossing.</div>
+      <div class="marks">
+        <div class="mkwrap"><div class="mk" style="padding:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22a7c9"/>
+      <stop offset="1" stop-color="#0a2540"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 27 L32 17 L48 27"/>
+    <path d="M16 38 L32 28 L48 38"/>
+    <path d="M16 49 L32 39 L48 49"/>
+  </g>
+</svg></div><div class="mkcap">Gradient tile</div></div>
+        <div class="mkwrap"><div class="mk" style="padding:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
+  <rect width="64" height="64" rx="16" fill="#22a7c9"/>
+  <g fill="none" stroke="#ffffff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 27 L32 17 L48 27"/>
+    <path d="M16 38 L32 28 L48 38"/>
+    <path d="M16 49 L32 39 L48 49"/>
+  </g>
+</svg></div><div class="mkcap">Solid ocean</div></div>
+        <div class="mkwrap"><div class="mk dark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
+  <g fill="none" stroke="#ffffff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 27 L32 17 L48 27"/>
+    <path d="M16 38 L32 28 L48 38"/>
+    <path d="M16 49 L32 39 L48 49"/>
+  </g>
+</svg></div><div class="mkcap">White (reversed)</div></div>
+        <div class="mkwrap"><div class="mk line"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
+  <g fill="none" stroke="#06192c" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 27 L32 17 L48 27"/>
+    <path d="M16 38 L32 28 L48 38"/>
+    <path d="M16 49 L32 39 L48 49"/>
+  </g>
+</svg></div><div class="mkcap">Ink (mono)</div></div>
+      </div>
+    </div>
+
+    <!-- Wordmark -->
+    <div class="card">
+      <div class="lbl">Wordmark</div>
+      <div class="cap">Plus Jakarta Sans ExtraBold. “Nav” in ink, “vic” in Ocean 400.</div>
+      <div class="center" style="padding:30px 0 14px">
+        <span class="wm" style="font-size:84px">Nav<i>vic</i></span>
+      </div>
+    </div>
+
+    <!-- Clearspace / min size -->
+    <div class="card">
+      <div class="lbl">Clear space &amp; min size</div>
+      <div class="cap">Keep clear space ≥ the height of the chevrons on all sides. Don’t place below 24&nbsp;px / 8&nbsp;mm tall.</div>
+      <div class="clear">
+        <span class="tile" style="width:64px;height:64px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22a7c9"/>
+      <stop offset="1" stop-color="#0a2540"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 27 L32 17 L48 27"/>
+    <path d="M16 38 L32 28 L48 38"/>
+    <path d="M16 49 L32 39 L48 49"/>
+  </g>
+</svg></span>
+        <span class="wm" style="font-size:34px">Nav<i>vic</i></span>
+        <span class="tile" style="width:24px;height:24px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22a7c9"/>
+      <stop offset="1" stop-color="#0a2540"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 27 L32 17 L48 27"/>
+    <path d="M16 38 L32 28 L48 38"/>
+    <path d="M16 49 L32 39 L48 49"/>
+  </g>
+</svg></span>
+      </div>
+    </div>
+
+    <!-- Palette -->
+    <div class="card span">
+      <div class="lbl">Color palette</div>
+      <div class="pal">
+        <div class="sw" style="background:#22a7c9">Ocean 400<small>#22A7C9</small></div>
+        <div class="sw" style="background:#0e8bb0">Ocean 500<small>#0E8BB0</small></div>
+        <div class="sw" style="background:#0b6e8f">Ocean 600<small>#0B6E8F</small></div>
+        <div class="sw" style="background:#0a2540">Abyss 800<small>#0A2540</small></div>
+        <div class="sw" style="background:#06192c">Abyss 900<small>#06192C</small></div>
+        <div class="sw" style="background:#e3f7fc;color:#06192c">Foam<small style="opacity:.6">#E3F7FC</small></div>
+        <div class="sw" style="background:#ff7a59">Coral<small>#FF7A59</small></div>
+      </div>
+    </div>
+  </div>
+</body></html>
