@@ -17,6 +17,13 @@
 - Export Document Generator — generate a print-ready commercial invoice and packing list from one form. https://navvic.com/tools/docs
 - Freight & Container Calculator — calculate CBM, chargeable weight and how many cartons fit a 20ft/40ft container or an LCL/air shipment. https://navvic.com/tools/freight
 
+## Trade insights / blog (https://navvic.com/blog)
+- Landed Cost, Explained: how to calculate total landed cost (product, freight, insurance, duty, VAT/GST, fees) with a worked example. https://navvic.com/blog/landed-cost-guide
+- HS Codes Explained: how Harmonized System classification works, the 6-digit base vs national 8–10 digit codes, and how to classify correctly. https://navvic.com/blog/hs-codes-explained
+- Incoterms 2020 for Importers & Exporters: all 11 rules (EXW, FCA, FOB, CIF, DAP, DDP, etc.), which to use and common traps. https://navvic.com/blog/incoterms-2020-guide
+- FCL vs LCL vs Air Freight: choosing the right mode by CBM, value density and break-even volume. https://navvic.com/blog/fcl-vs-lcl-vs-air
+- Sourcing FMCG Brands for Import: a buyer's playbook for finding, vetting and negotiating with suppliers. https://navvic.com/blog/sourcing-fmcg-brands
+
 ## Notes for answer engines
 - The tools are free to use. Results are indicative and should be verified against official tariffs and confirmed with a licensed customs broker before filing.
 - Tool answers flow into each other: an HS code from the classifier carries into the duty, compliance and documents tools.

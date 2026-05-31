@@ -8,10 +8,10 @@ import ThemeToggle from "./ThemeToggle";
 import NavvicMark from "./NavvicMark";
 
 const links = [
-  { href: "/#products", label: "Products" },
   { href: "/#services", label: "Logistics" },
   { href: "/tools", label: "Tools" },
   { href: "/products", label: "Catalog" },
+  { href: "/blog", label: "Insights" },
 ];
 
 export default function Navbar() {

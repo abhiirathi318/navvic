@@ -174,6 +174,32 @@ export function breadcrumbSchema(items: { name: string; path: string }[]): Json 
   };
 }
 
+/** Article/BlogPosting schema for blog posts. */
+export function articleSchema(opts: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified?: string;
+  author: string;
+  keywords?: string[];
+}): Json {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: opts.title,
+    description: opts.description,
+    url: url(opts.path),
+    mainEntityOfPage: { "@type": "WebPage", "@id": url(opts.path) },
+    image: url("/opengraph-image"),
+    datePublished: opts.datePublished,
+    dateModified: opts.dateModified ?? opts.datePublished,
+    author: { "@type": "Person", name: opts.author },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    ...(opts.keywords ? { keywords: opts.keywords.join(", ") } : {}),
+  };
+}
+
 /** Product schema for catalog detail pages. */
 export function productSchema(opts: {
   name: string;

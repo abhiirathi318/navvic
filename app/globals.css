@@ -128,6 +128,91 @@ body {
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
 }
 
+/* Long-form article styling (blog posts) */
+.prose {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+.prose > * + * { margin-top: 1.25rem; }
+.prose h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-top: 2.75rem;
+  scroll-margin-top: 6rem;
+}
+.prose h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  scroll-margin-top: 6rem;
+}
+.prose p { color: var(--text); }
+.prose a {
+  color: var(--color-ocean-500);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--color-ocean-400) 45%, transparent);
+}
+.prose a:hover { text-decoration-color: var(--color-ocean-400); }
+.prose strong { color: var(--text); font-weight: 700; }
+.prose ul, .prose ol { padding-left: 1.35rem; }
+.prose ul { list-style: none; }
+.prose ul > li { position: relative; padding-left: 1.1rem; }
+.prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: var(--color-ocean-400);
+}
+.prose ol { list-style: decimal; }
+.prose li + li { margin-top: 0.5rem; }
+.prose li::marker { color: var(--color-ocean-400); font-weight: 700; }
+.prose blockquote {
+  border-left: 3px solid var(--color-ocean-400);
+  padding: 0.25rem 0 0.25rem 1.1rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  background: color-mix(in srgb, var(--color-ocean-400) 12%, transparent);
+  padding: 0.12em 0.4em;
+  border-radius: 0.35rem;
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  display: block;
+  overflow-x: auto;
+}
+.prose th, .prose td {
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+}
+.prose th {
+  background: color-mix(in srgb, var(--color-ocean-400) 10%, transparent);
+  font-weight: 700;
+}
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
 /* Print: show only the document preview */
 @media print {
   body * { visibility: hidden; }

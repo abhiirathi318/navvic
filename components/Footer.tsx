@@ -25,11 +25,12 @@ export default function Footer() {
           links={["About", "Trade lanes", "Sustainability", "Careers"]}
         />
         <FooterCol
-          title="Support"
+          title="Resources"
           links={[
+            { label: "Trade insights", href: "/blog" },
+            { label: "Free trade tools", href: "/tools" },
+            { label: "Product catalog", href: "/products" },
             { label: "Request quote", href: "/#quote" },
-            { label: "Track shipment", href: "mailto:support@navvic.com?subject=Track%20shipment" },
-            { label: "Documentation", href: "/tools/docs" },
             { label: "support@navvic.com", href: "mailto:support@navvic.com" },
           ]}
         />
