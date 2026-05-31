@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { callGemini, countryName, GeminiImage } from "@/lib/gemini";
+import { validateHsCodeIfPresent } from "@/lib/hs-code";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -61,11 +62,18 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const hsMinDigits = hsCode && product.length < 3 && !image ? 6 : 4;
+  const hsCheck = validateHsCodeIfPresent(hsCode, hsMinDigits);
+  if (!hsCheck.ok) {
+    return NextResponse.json({ error: hsCheck.error }, { status: 400 });
+  }
+  const normalizedHs = hsCheck.normalized ?? "";
+
   const prompt = `You are a trade-compliance specialist. Assess whether the following product can be imported into the destination market and what regulatory requirements apply.
 
 Destination market: ${countryName(destination)}
 Product: ${product || "(see HS code / image)"}
-HS code: ${hsCode || "(not provided)"}
+HS code: ${normalizedHs || "(not provided)"}
 ${image ? "An image of the product is attached. Use it to identify the commodity." : ""}
 
 INSTRUCTIONS:

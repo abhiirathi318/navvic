@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { looksLikeHsCodeInput, validateHsCode } from "@/lib/hs-code";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -104,6 +105,20 @@ export async function POST(req: NextRequest) {
   if (description.length < 3 && !image) {
     return NextResponse.json(
       { error: "Describe the product (a few words) or upload a product image." },
+      { status: 400 }
+    );
+  }
+
+  if (description && looksLikeHsCodeInput(description)) {
+    const hsCheck = validateHsCode(description, 6);
+    if (!hsCheck.ok) {
+      return NextResponse.json({ error: hsCheck.error }, { status: 400 });
+    }
+    return NextResponse.json(
+      {
+        error:
+          "Describe the product in words (e.g. \"men's cotton jeans\"). This tool classifies products — it doesn't look up an existing HS code. For duty estimates on a known code, use the Duty Estimator.",
+      },
       { status: 400 }
     );
   }

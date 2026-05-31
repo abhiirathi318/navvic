@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calculator, Loader2, AlertTriangle, Sparkles } from "lucide-react";
 import NextSteps from "./NextSteps";
+import { validateHsCodeIfPresent } from "@/lib/hs-code";
 
 type Charge = { name: string; rate: string; basis?: string; amount: number };
 type Result = {
@@ -66,6 +67,12 @@ export default function DutyTool() {
       setError("Enter the shipment value.");
       return;
     }
+    const hsMinDigits = hsCode.trim() && !product.trim() ? 6 : 4;
+    const hsCheck = validateHsCodeIfPresent(hsCode, hsMinDigits);
+    if (!hsCheck.ok) {
+      setError(hsCheck.error);
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
@@ -73,7 +80,7 @@ export default function DutyTool() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          hsCode,
+          hsCode: hsCheck.normalized ?? hsCode,
           product,
           origin,
           destination,

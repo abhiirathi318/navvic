@@ -20,6 +20,7 @@ import {
   FileText,
 } from "lucide-react";
 import NextSteps from "./NextSteps";
+import { validateHsCodeIfPresent } from "@/lib/hs-code";
 
 type Item = { name: string; detail: string; agency?: string };
 type Result = {
@@ -87,6 +88,12 @@ export default function ComplianceTool() {
       setError("Describe the product, add an HS code, or upload an image.");
       return;
     }
+    const hsMinDigits = hsCode.trim() && product.trim().length < 3 && !image ? 6 : 4;
+    const hsCheck = validateHsCodeIfPresent(hsCode, hsMinDigits);
+    if (!hsCheck.ok) {
+      setError(hsCheck.error);
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
@@ -95,7 +102,7 @@ export default function ComplianceTool() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           product,
-          hsCode,
+          hsCode: hsCheck.normalized ?? hsCode,
           destination,
           image: image ? { mimeType: image.mimeType, data: image.data } : undefined,
         }),

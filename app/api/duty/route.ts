@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { callGemini, countryName } from "@/lib/gemini";
+import { validateHsCodeIfPresent } from "@/lib/hs-code";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -64,11 +65,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Enter the shipment value (greater than 0)." }, { status: 400 });
   }
 
+  const hsMinDigits = hsCode && !product ? 6 : 4;
+  const hsCheck = validateHsCodeIfPresent(hsCode, hsMinDigits);
+  if (!hsCheck.ok) {
+    return NextResponse.json({ error: hsCheck.error }, { status: 400 });
+  }
+  const normalizedHs = hsCheck.normalized ?? "";
+
   const prompt = `You are a senior customs broker. Estimate the import duties, taxes and landed cost for the following shipment.
 
 Destination market: ${countryName(destination)}
 Country/region of origin: ${origin}
-HS code: ${hsCode || "(not given; infer from the product description)"}
+HS code: ${normalizedHs || "(not given; infer from the product description)"}
 Product: ${product || "(not given; rely on the HS code)"}
 Declared/transaction value: ${value} (treat as the ${incoterm} value)
 Incoterm: ${incoterm}

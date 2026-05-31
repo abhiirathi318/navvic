@@ -16,6 +16,7 @@ import {
   Copy,
 } from "lucide-react";
 import NextSteps from "./NextSteps";
+import { looksLikeHsCodeInput, validateHsCode } from "@/lib/hs-code";
 
 type Question = { id: string; question: string; why?: string; options: string[] };
 type CodeLevel = { code: string; title: string };
@@ -91,6 +92,17 @@ export default function HsCodeTool() {
   async function classify(allAnswers: Record<string, string>) {
     if (description.trim().length < 3 && !image) {
       setError("Describe the product or upload a product image.");
+      return;
+    }
+    if (description.trim() && looksLikeHsCodeInput(description)) {
+      const hsCheck = validateHsCode(description, 6);
+      if (!hsCheck.ok) {
+        setError(hsCheck.error);
+        return;
+      }
+      setError(
+        "Describe the product in words (e.g. \"men's cotton jeans\"). This tool classifies products — it doesn't look up an existing HS code."
+      );
       return;
     }
     setLoading(true);
