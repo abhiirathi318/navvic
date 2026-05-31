@@ -49,13 +49,13 @@ export default function FreightTool() {
 
     // Mode recommendation heuristic
     let mode = "Sea FCL";
-    let modeWhy = "Volume justifies a full container — usually the lowest cost per unit.";
+    let modeWhy = "Volume justifies a full container, usually the lowest cost per unit.";
     if (totalCbm < 2 && totalWeight < 200) {
       mode = "Air freight";
-      modeWhy = "Small, light shipment — air is fast and the volume is too low for sea economics.";
+      modeWhy = "Small, light shipment: air is fast and the volume is too low for sea economics.";
     } else if (totalCbm < spec.cbm * 0.6) {
       mode = "Sea LCL";
-      modeWhy = "Too little volume to fill a container — share one and pay only for the space you use.";
+      modeWhy = "Too little volume to fill a container: share one and pay only for the space you use.";
     }
 
     return {

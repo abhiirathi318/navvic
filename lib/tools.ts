@@ -30,7 +30,7 @@ export const tools: Tool[] = [
     name: "HS Code Classifier",
     tagline: "Describe it → get the code",
     description:
-      "Describe a product in plain English or upload a photo and get the exact Harmonized System code — Chapter (H2), Heading (H4), Subheading (H6) and the national tariff line (H8).",
+      "Describe a product in plain English or upload a photo and get the exact Harmonized System code: Chapter (H2), Heading (H4), Subheading (H6) and the national tariff line (H8).",
     business:
       "The HS code is the key that unlocks duty rates, paperwork and compliance. Get it right and everything downstream is faster and cheaper.",
     step: 1,
@@ -44,7 +44,7 @@ export const tools: Tool[] = [
     name: "Duty & Landed-Cost Estimator",
     tagline: "Know your true cost",
     description:
-      "Enter an HS code, value and destination to estimate import duty, VAT/GST and other charges — and the full landed cost per unit.",
+      "Enter an HS code, value and destination to estimate import duty, VAT/GST and other charges, and the full landed cost per unit.",
     business:
       "Price your imports with confidence and protect your margins. No more surprises when the customs bill arrives.",
     step: 2,
@@ -74,7 +74,7 @@ export const tools: Tool[] = [
     description:
       "Describe your deal and get a plain-English breakdown of cost and risk at every step, with the right Incoterm for the trade.",
     business:
-      "Negotiate from a position of clarity — know exactly where your responsibility ends and your buyer's begins.",
+      "Negotiate from a position of clarity: know exactly where your responsibility ends and your buyer's begins.",
     step: 4,
     icon: "Scale",
     status: "live",

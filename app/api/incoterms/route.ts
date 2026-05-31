@@ -75,7 +75,7 @@ ${mode ? `Transport mode: ${mode}` : ""}
 INSTRUCTIONS:
 - Use only valid Incoterms 2020 rules (EXW, FCA, FAS, FOB, CFR, CIF, CPT, CIP, DAP, DPU, DDP).
 - Remember FAS/FOB/CFR/CIF are for sea/inland-waterway transport only; the others work for any mode (incl. containers/air). Recommend a mode-appropriate term.
-- responsibilities must cover, at minimum: export packing & checks, export customs clearance, origin handling/loading, main carriage (freight), insurance, destination handling/unloading, and import duties & taxes — each assigned to Seller or Buyer under the chosen term.
+- responsibilities must cover, at minimum: export packing & checks, export customs clearance, origin handling/loading, main carriage (freight), insurance, destination handling/unloading, and import duties & taxes, each assigned to Seller or Buyer under the chosen term.
 - Clearly state the precise point of risk transfer.
 - Give a short list of concrete seller_duties and buyer_duties.
 - Suggest 1-3 sensible alternative terms and when they'd be better.

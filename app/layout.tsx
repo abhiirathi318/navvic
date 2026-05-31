@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Navvic — Global FMCG Import & Export",
+  title: "Navvic | Global FMCG Import & Export",
   description:
     "Navvic moves the world's favorite FMCG brands across every ocean. Sourcing, ocean freight, customs and warehousing across 40+ countries.",
 };

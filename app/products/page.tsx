@@ -2,7 +2,7 @@ import ProductShowcase from "@/components/ProductShowcase";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Catalog — Navvic",
+  title: "Catalog | Navvic",
 };
 
 export default function ProductsPage() {
@@ -16,7 +16,7 @@ export default function ProductsPage() {
             The <span className="gradient-text">Catalog</span>
           </h1>
           <p className="mt-4 max-w-xl text-muted">
-            Every SKU we move — browse by category and dive into specs, MOQs and container loads.
+            Every SKU we move: browse by category and dive into specs, MOQs and container loads.
           </p>
         </div>
       </section>

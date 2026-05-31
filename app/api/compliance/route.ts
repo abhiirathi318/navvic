@@ -66,11 +66,11 @@ export async function POST(req: NextRequest) {
 Destination market: ${countryName(destination)}
 Product: ${product || "(see HS code / image)"}
 HS code: ${hsCode || "(not provided)"}
-${image ? "An image of the product is attached — use it to identify the commodity." : ""}
+${image ? "An image of the product is attached. Use it to identify the commodity." : ""}
 
 INSTRUCTIONS:
 - Set verdict to "allowed" (freely importable subject to normal duties), "restricted" (importable only with licences/permits/conditions), "prohibited" (cannot be imported), or "needs_review" if it genuinely depends on details not given.
-- List concrete import licences/permits/registrations, mandatory certifications and standards, labelling/marking rules, and any quotas/bans/SPS controls — only those that realistically apply to THIS product in THIS market. Do not pad with generic items.
+- List concrete import licences/permits/registrations, mandatory certifications and standards, labelling/marking rules, and any quotas/bans/SPS controls, only those that realistically apply to THIS product in THIS market. Do not pad with generic items.
 - Name the responsible agency where you can (e.g. FDA, USDA, DGFT, BIS, FSSAI, CE/EU notified body, UKCA).
 - List any product-specific border documents.
 - Keep each detail to one crisp sentence. Be accurate and conservative; clearly remind the user to confirm with the customs authority or a licensed broker.`;

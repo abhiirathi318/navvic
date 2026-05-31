@@ -115,7 +115,7 @@ export default function HsCodeTool() {
       setPending({});
       setResult(data as ApiResult);
     } catch {
-      setError("Network error — please try again.");
+      setError("Network error. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -147,7 +147,7 @@ export default function HsCodeTool() {
           }}
         >
           <label className="flex items-center gap-2 text-sm font-semibold text-ocean-400">
-            <Sparkles size={16} /> Describe your product — or upload a photo
+            <Sparkles size={16} /> Describe your product or upload a photo
           </label>
 
           <div className="mt-3 flex gap-3">
@@ -407,7 +407,7 @@ function ClassificationTree({
           onToggle={() => setChapterOpen((o) => !o)}
           hasChildren
         >
-          <span className="font-bold">{data.chapter.code}</span> — CHAPTER {data.chapter.code} —{" "}
+          <span className="font-bold">{data.chapter.code}</span>: CHAPTER {data.chapter.code},{" "}
           <span className="uppercase">{data.chapter.title}</span>
         </TreeRow>
 
@@ -420,7 +420,7 @@ function ClassificationTree({
               onToggle={() => setHeadingOpen((o) => !o)}
               hasChildren
             >
-              <span className="font-bold">{data.heading.code}</span> — {data.heading.title}
+              <span className="font-bold">{data.heading.code}</span>: {data.heading.title}
             </TreeRow>
 
             {headingOpen && (
@@ -438,7 +438,7 @@ function ClassificationTree({
                         hasChildren={lines.length > 0}
                         highlight={isRec}
                       >
-                        <span className="font-bold">{s.code}</span> — {s.title}
+                        <span className="font-bold">{s.code}</span>: {s.title}
                         {isRec && (
                           <span className="ml-2 rounded bg-ocean-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase not-italic text-ocean-400">
                             recommended
@@ -450,7 +450,7 @@ function ClassificationTree({
                         <div className="ml-3 border-l border-[var(--border)] pl-2">
                           {lines.map((t) => (
                             <TreeRow key={t.code} depth={3} leaf>
-                              <span className="font-bold">{t.code}</span> — {t.title}
+                              <span className="font-bold">{t.code}</span>: {t.title}
                             </TreeRow>
                           ))}
                         </div>
@@ -478,7 +478,7 @@ function ClassificationTree({
         )}
         <p className="text-xs text-muted">
           Tariff schedule shown for <span className="font-semibold">{country}</span>. Indicative AI
-          classification — verify against the official tariff before filing.
+          classification. Verify against the official tariff before filing.
         </p>
       </div>
     </motion.div>

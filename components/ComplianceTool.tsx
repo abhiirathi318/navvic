@@ -107,7 +107,7 @@ export default function ComplianceTool() {
       }
       setResult(data as Result);
     } catch {
-      setError("Network error — please try again.");
+      setError("Network error. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -129,13 +129,13 @@ export default function ComplianceTool() {
               <input
                 value={product}
                 onChange={(e) => setProduct(e.target.value)}
-                placeholder="Product — e.g. Raw honey in glass jars"
+                placeholder="Product, e.g. Raw honey in glass jars"
                 className={field}
               />
               <input
                 value={hsCode}
                 onChange={(e) => setHsCode(e.target.value)}
-                placeholder="HS code (optional) — e.g. 0409.00"
+                placeholder="HS code (optional), e.g. 0409.00"
                 className={field}
               />
             </div>
@@ -282,7 +282,7 @@ export default function ComplianceTool() {
                   </p>
                 )}
                 <p className="mt-2">
-                  Indicative guidance — always confirm with the destination customs authority or a licensed broker
+                  Indicative guidance: always confirm with the destination customs authority or a licensed broker
                   before shipping.
                 </p>
               </div>

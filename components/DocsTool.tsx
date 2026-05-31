@@ -232,7 +232,7 @@ function Document({
       <div className="flex items-start justify-between">
         <div>
           <div className="font-display text-2xl font-extrabold tracking-tight">{title}</div>
-          <div className="mt-0.5 text-xs uppercase tracking-widest text-ocean-400">Navvic — International Trade</div>
+          <div className="mt-0.5 text-xs uppercase tracking-widest text-ocean-400">Navvic | International Trade</div>
         </div>
         <div className="text-right text-sm">
           <div><span className="text-muted">No.: </span><span className="font-semibold">{invoiceNo}</span></div>
@@ -248,15 +248,15 @@ function Document({
         </div>
         <div>
           <div className="text-xs font-semibold uppercase text-muted">Consignee</div>
-          <div className="mt-1 whitespace-pre-line">{consignee || "—"}</div>
+          <div className="mt-1 whitespace-pre-line">{consignee || "-"}</div>
         </div>
         <div>
           <div className="text-xs font-semibold uppercase text-muted">Country of origin</div>
-          <div className="mt-1">{origin || "—"}</div>
+          <div className="mt-1">{origin || "-"}</div>
         </div>
         <div>
           <div className="text-xs font-semibold uppercase text-muted">Destination</div>
-          <div className="mt-1">{destination || "—"}</div>
+          <div className="mt-1">{destination || "-"}</div>
         </div>
       </div>
 
@@ -284,8 +284,8 @@ function Document({
           {lines.map((l, i) => (
             <tr key={i}>
               <td className={cell}>{i + 1}</td>
-              <td className={cell}>{l.description || "—"}</td>
-              <td className={cell}>{l.hs || "—"}</td>
+              <td className={cell}>{l.description || "-"}</td>
+              <td className={cell}>{l.hs || "-"}</td>
               <td className={cell}>{n(l.qty)} {l.unit}</td>
               {mode === "invoice" ? (
                 <>
@@ -321,7 +321,7 @@ function Document({
       {mode === "invoice" && (
         <div className="mt-4 text-sm">
           <span className="text-muted">Payment terms: </span>
-          {terms || "—"}
+          {terms || "-"}
         </div>
       )}
 

@@ -88,7 +88,7 @@ export default function DutyTool() {
       }
       setResult(data as Result);
     } catch {
-      setError("Network error — please try again.");
+      setError("Network error. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -244,7 +244,7 @@ export default function DutyTool() {
                   <tbody>
                     <tr className="border-t border-[var(--border)]">
                       <td className="py-2.5 font-medium">Customs value</td>
-                      <td className="py-2.5 text-muted">—</td>
+                      <td className="py-2.5 text-muted">-</td>
                       <td className="hidden py-2.5 text-muted sm:table-cell">{incoterm}</td>
                       <td className="py-2.5 text-right">{money(result.customs_value, result.currency)}</td>
                     </tr>
@@ -252,7 +252,7 @@ export default function DutyTool() {
                       <tr key={i} className="border-t border-[var(--border)]">
                         <td className="py-2.5 font-medium">{c.name}</td>
                         <td className="py-2.5 text-muted">{c.rate}</td>
-                        <td className="hidden py-2.5 text-muted sm:table-cell">{c.basis ?? "—"}</td>
+                        <td className="hidden py-2.5 text-muted sm:table-cell">{c.basis ?? "-"}</td>
                         <td className="py-2.5 text-right">{money(c.amount, result.currency)}</td>
                       </tr>
                     ))}
@@ -287,7 +287,7 @@ export default function DutyTool() {
                     {result.notes}
                   </p>
                 )}
-                <p>Indicative estimate — verify against the official tariff and your broker before filing.</p>
+                <p>Indicative estimate. Verify against the official tariff and your broker before filing.</p>
               </div>
             </div>
 

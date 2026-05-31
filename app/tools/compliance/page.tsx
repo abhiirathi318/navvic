@@ -3,7 +3,7 @@ import ComplianceTool from "@/components/ComplianceTool";
 import ToolPageShell from "@/components/ToolPageShell";
 
 export const metadata = {
-  title: "Import Compliance Checker — Navvic Tools",
+  title: "Import Compliance Checker | Navvic Tools",
   description:
     "Check whether a product can be imported into a market and what licences, certifications and labelling it needs.",
 };

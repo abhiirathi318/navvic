@@ -13,7 +13,7 @@ import ToolCard from "@/components/ToolCard";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Trade Tools — Navvic",
+  title: "Trade Tools | Navvic",
   description:
     "A free, connected toolkit for importers and exporters: classify HS codes, estimate landed cost, check compliance, choose Incoterms, generate documents and plan freight.",
 };
@@ -43,7 +43,7 @@ export default function ToolsPage() {
             One toolkit for <span className="gradient-text">every shipment</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted">
-            From &ldquo;what is this product?&rdquo; to a printed packing list — Navvic&rsquo;s tools
+            From &ldquo;what is this product?&rdquo; to a printed packing list, Navvic&rsquo;s tools
             walk a shipment through every cross-border decision. Each one hands its answer to the
             next, so you never re-type a thing.
           </p>
@@ -96,7 +96,7 @@ export default function ToolsPage() {
           ))}
         </div>
         <p className="mt-8 text-center text-sm text-muted">
-          All tools are free to use. Indicative results — always verify against official tariffs and
+          All tools are free to use. Indicative results: always verify against official tariffs and
           confirm with a licensed customs broker before you file.
         </p>
       </section>

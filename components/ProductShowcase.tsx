@@ -24,7 +24,7 @@ export default function ProductShowcase() {
           Premium FMCG brands, ready to ship.
         </h2>
         <p className="mt-4 max-w-2xl text-muted">
-          A curated selection of the most-loved European and North American brands — fully traceable,
+          A curated selection of the most-loved European and North American brands, fully traceable,
           certified, and priced for container-scale distribution.
         </p>
       </Reveal>

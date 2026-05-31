@@ -76,7 +76,7 @@ export const products: Product[] = [
     originFlag: "🇮🇹",
     moq: "40 cases",
     leadTime: "2–3 weeks",
-    blurb: "Italy's #1 durum wheat semolina spaghetti — the global pantry standard.",
+    blurb: "Italy's #1 durum wheat semolina spaghetti, the global pantry standard.",
     description:
       "Barilla Spaghetti No.5 is the world's most recognized pasta, made from 100% premium durum wheat semolina with the perfect al dente bite. A high-rotation pantry essential with universal demand and dependable container economics.",
     highlights: ["100% durum wheat semolina", "World's #1 pasta brand", "High-rotation staple SKU"],
@@ -112,7 +112,7 @@ export const products: Product[] = [
     leadTime: "2–3 weeks",
     blurb: "The world's favorite hazelnut cocoa spread in the family-size jar.",
     description:
-      "Nutella by Ferrero needs no introduction — a creamy hazelnut and cocoa spread loved across generations. The 750g family jar is a breakfast-aisle powerhouse with exceptional brand pull and consistent year-round volume.",
+      "Nutella by Ferrero needs no introduction: a creamy hazelnut and cocoa spread loved across generations. The 750g family jar is a breakfast-aisle powerhouse with exceptional brand pull and consistent year-round volume.",
     highlights: ["Globally iconic breakfast brand", "Family-size 750g format", "Exceptional brand pull"],
     accent: "#8b2f1d",
     certifications: ["Palm Oil RSPO"],
@@ -144,7 +144,7 @@ export const products: Product[] = [
     originFlag: "🇺🇸",
     moq: "40 cases",
     leadTime: "3 weeks",
-    blurb: "The world's best-selling cookie — cocoa wafers with vanilla creme.",
+    blurb: "The world's best-selling cookie: cocoa wafers with vanilla creme.",
     description:
       "Oreo is the planet's favorite cookie: two crisp cocoa wafers hugging a sweet vanilla creme. A universally demanded snack SKU with relentless shelf rotation and broad multi-channel distribution.",
     highlights: ["World's best-selling cookie", "Universal demand", "Multi-channel rotation"],
@@ -178,7 +178,7 @@ export const products: Product[] = [
     originFlag: "🇩🇪",
     moq: "35 cases",
     leadTime: "3 weeks",
-    blurb: "The original gummy bear — five fruity flavors since 1922.",
+    blurb: "The original gummy bear with five fruity flavors since 1922.",
     description:
       "Haribo Goldbears are the original gummy bears that started it all, with five classic fruit flavors and unmistakable chewy texture. A confectionery cornerstone with cross-generational appeal and very high turnover.",
     highlights: ["The original gummy bear", "Five classic fruit flavors", "Very high turnover SKU"],

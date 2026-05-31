@@ -68,8 +68,8 @@ export async function POST(req: NextRequest) {
 
 Destination market: ${countryName(destination)}
 Country/region of origin: ${origin}
-HS code: ${hsCode || "(not given — infer from the product description)"}
-Product: ${product || "(not given — rely on the HS code)"}
+HS code: ${hsCode || "(not given; infer from the product description)"}
+Product: ${product || "(not given; rely on the HS code)"}
 Declared/transaction value: ${value} (treat as the ${incoterm} value)
 Incoterm: ${incoterm}
 

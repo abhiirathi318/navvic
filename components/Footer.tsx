@@ -16,7 +16,7 @@ export default function Footer() {
           </Link>
           <p className="mt-4 max-w-sm text-sm text-muted">
             End-to-end import &amp; export of premium FMCG brands. Sourcing, freight, customs and
-            warehousing — delivered across 40+ countries.
+            warehousing, delivered across 40+ countries.
           </p>
         </div>
 

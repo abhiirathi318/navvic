@@ -19,7 +19,7 @@ export default function ToolsSection() {
                 Free tools for smarter shipping.
               </h2>
               <p className="mt-4 max-w-xl text-muted">
-                A connected toolkit for importers and exporters — classify HS codes, estimate landed
+                A connected toolkit for importers and exporters: classify HS codes, estimate landed
                 cost, check compliance, pick Incoterms, generate documents and plan freight. Each
                 tool flows into the next.
               </p>

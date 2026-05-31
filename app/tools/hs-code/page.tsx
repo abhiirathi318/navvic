@@ -4,7 +4,7 @@ import HsCodeTool from "@/components/HsCodeTool";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "HS Code Classifier — Navvic Tools",
+  title: "HS Code Classifier | Navvic Tools",
   description:
     "Match plain-English product descriptions to Harmonized System codes at H2, H4, H6 and H8 levels.",
 };
@@ -37,9 +37,9 @@ export default function HsCodePage() {
             HS Code <span className="gradient-text">Classifier</span>
           </h1>
           <p className="mt-4 max-w-2xl text-muted">
-            Describe any product the way you'd say it out loud — or just upload a photo. Navvic's
-            classifier maps it to the full Harmonized System hierarchy — Chapter (H2), Heading (H4),
-            Subheading (H6) and the national tariff line (H8) — so you can quote duties and file
+            Describe any product the way you'd say it out loud, or just upload a photo. Navvic's
+            classifier maps it to the full Harmonized System hierarchy: Chapter (H2), Heading (H4),
+            Subheading (H6) and the national tariff line (H8), so you can quote duties and file
             paperwork faster.
           </p>
 

@@ -67,7 +67,7 @@ export default function NextSteps({
         <h3 className="font-display text-lg font-bold">{heading}</h3>
       </div>
       <p className="mt-1 text-sm text-muted">
-        Carry these details straight into your next tool — no re-typing.
+        Carry these details straight into your next tool with no re-typing.
       </p>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-3">

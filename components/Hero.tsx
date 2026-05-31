@@ -50,7 +50,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p variants={item} className="mt-6 max-w-2xl text-lg text-muted">
-          Navvic is your end-to-end import &amp; export partner — sourcing premium FMCG products
+          Navvic is your end-to-end import &amp; export partner, sourcing premium FMCG products
           from Europe, the US and Canada and delivering them container-by-container to your shelves.
         </motion.p>
 

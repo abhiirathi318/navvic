@@ -58,10 +58,6 @@ export default function ToolCard({ tool }: { tool: Tool }) {
         </div>
         <h3 className="font-display mt-1.5 text-xl font-bold">{tool.name}</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted">{tool.description}</p>
-        <div className="mt-3 rounded-xl border border-[var(--border)] bg-ocean-400/5 px-3 py-2 text-xs leading-relaxed text-muted">
-          <span className="font-semibold text-ocean-400">Why it helps · </span>
-          {tool.business}
-        </div>
       </div>
 
       {live && (

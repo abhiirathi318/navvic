@@ -1,4 +1,4 @@
-/* Typographic wordmark logo treatment — renders a brand's name as a styled
+/* Typographic wordmark logo treatment: renders a brand's name as a styled
    monogram + wordmark on a branded gradient panel. No trademarked artwork. */
 
 function initials(brand: string) {

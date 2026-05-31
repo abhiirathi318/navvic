@@ -117,7 +117,7 @@ export async function POST(req: NextRequest) {
   const prompt = `You are a senior customs broker and an expert in the WCO Harmonized System. Classify products with maximum accuracy, applying the General Rules of Interpretation (GRI), Section and Chapter Notes, and legal texts.
 
 ACCURACY FIRST. Many products are ambiguous and the correct HS6 depends on details the user has not stated. Common decisive factors:
-- Knitted/crocheted (Chapter 61) vs woven (Chapter 62) — e.g. denim jeans are usually WOVEN cotton trousers => heading 62.03/62.04, NOT 61.03.
+- Knitted/crocheted (Chapter 61) vs woven (Chapter 62), e.g. denim jeans are usually WOVEN cotton trousers => heading 62.03/62.04, NOT 61.03.
 - Gender/age (men's/boys' vs women's/girls'), which splits headings.
 - Constituent material (cotton vs synthetic vs wool), processing (fresh/frozen/dried), form, function, and intended use.
 
@@ -127,7 +127,7 @@ DECISION:
 
 When status="classified", return:
 - recommended_hs6: the single best 6-digit subheading.
-- chapter: {code (2-digit), title} and heading: {code (4-digit, formatted NN.NN), title} — use the official WCO chapter/heading titles.
+- chapter: {code (2-digit), title} and heading: {code (4-digit, formatted NN.NN), title}: use the official WCO chapter/heading titles.
 - subheadings: EVERY real 6-digit subheading that exists under the chosen 4-digit heading (official WCO codes formatted NNNN.NN and their official titles), in numeric order, with recommended=true on exactly one.
 - tariff_lines: the plausible 8-digit national tariff lines under the recommended subheading for ${country} (formatted NNNN.NN.NN). If unsure, give the most likely lines.
 - confidence (0-1), rationale (one or two sentences), notes (assumptions + reminder to verify against the official tariff).
@@ -135,7 +135,7 @@ When status="classified", return:
 Always set "product" to a concise label (e.g. "Jeans (men's, woven cotton)").
 
 ${image ? "An image of the product is attached. Identify the commodity from the image, combining it with any text the user provided. If the image is unclear or a decisive detail (material, knitted vs woven, gender, etc.) is not visible, ask a clarifying question rather than guessing." : ""}
-Product description: """${description || "(none provided — rely on the attached image)"}"""${answersText}`;
+Product description: """${description || "(none provided; rely on the attached image)"}"""${answersText}`;
 
   const parts: Array<Record<string, unknown>> = [{ text: prompt }];
   if (image?.data && image?.mimeType) {

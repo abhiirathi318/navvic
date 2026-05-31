@@ -58,7 +58,7 @@ export default function IncotermsTool() {
       }
       setResult(data as Result);
     } catch {
-      setError("Network error — please try again.");
+      setError("Network error. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -77,7 +77,7 @@ export default function IncotermsTool() {
           }}
         >
           <label className="flex items-center gap-2 text-sm font-semibold text-ocean-400">
-            <Sparkles size={16} /> Describe your deal — get the right Incoterm
+            <Sparkles size={16} /> Describe your deal and get the right Incoterm
           </label>
           <textarea
             value={scenario}
@@ -95,7 +95,7 @@ export default function IncotermsTool() {
                 onChange={(e) => setRole(e.target.value)}
                 className="rounded-xl border border-[var(--border)] bg-surface px-3 py-2.5 text-sm outline-none focus:border-ocean-400/60"
               >
-                <option value="">—</option>
+                <option value="">Select</option>
                 {ROLES.map((r) => (
                   <option key={r} value={r}>
                     {r}
@@ -110,7 +110,7 @@ export default function IncotermsTool() {
                 onChange={(e) => setMode(e.target.value)}
                 className="rounded-xl border border-[var(--border)] bg-surface px-3 py-2.5 text-sm outline-none focus:border-ocean-400/60"
               >
-                <option value="">—</option>
+                <option value="">Select</option>
                 {MODES.map((m) => (
                   <option key={m} value={m}>
                     {m}
@@ -177,7 +177,7 @@ export default function IncotermsTool() {
               <div className="border-b border-[var(--border)] bg-surface/60 p-5 sm:p-6">
                 <h2 className="font-display text-3xl font-extrabold tracking-tight">
                   <span className="gradient-text">{result.incoterm}</span>{" "}
-                  <span className="text-muted">— {result.incoterm_name}</span>
+                  <span className="text-muted">: {result.incoterm_name}</span>
                 </h2>
                 {result.suitable_modes && (
                   <div className="mt-1 text-xs font-semibold uppercase tracking-wide text-ocean-400">
@@ -231,7 +231,7 @@ export default function IncotermsTool() {
                     {result.alternatives.map((a) => (
                       <div key={a.incoterm} className="text-sm">
                         <span className="font-bold text-ocean-400">{a.incoterm}</span>
-                        <span className="text-muted"> — {a.why}</span>
+                        <span className="text-muted">: {a.why}</span>
                       </div>
                     ))}
                   </div>
