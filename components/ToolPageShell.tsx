@@ -2,6 +2,10 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Suspense, type ReactNode } from "react";
 import Footer from "./Footer";
+import JsonLd from "./JsonLd";
+import { getTool } from "@/lib/tools";
+import { toolSeo } from "@/lib/tool-seo";
+import { softwareAppSchema, faqSchema, breadcrumbSchema } from "@/lib/seo";
 
 export default function ToolPageShell({
   icon,
@@ -9,6 +13,7 @@ export default function ToolPageShell({
   title,
   gradient,
   description,
+  slug,
   wide = false,
   children,
 }: {
@@ -17,10 +22,13 @@ export default function ToolPageShell({
   title: string;
   gradient: string;
   description: string;
+  slug?: string;
   wide?: boolean;
   children: ReactNode;
 }) {
   const maxW = wide ? "max-w-5xl" : "max-w-4xl";
+  const tool = slug ? getTool(slug) : undefined;
+  const seo = slug ? toolSeo[slug] : undefined;
   return (
     <main className="overflow-x-hidden">
       <section className="relative pt-32 pb-16">
@@ -56,8 +64,46 @@ export default function ToolPageShell({
               {children}
             </Suspense>
           </div>
+
+          {seo && seo.faqs.length > 0 && (
+            <section className="mt-16" aria-labelledby="faq-heading">
+              <h2 id="faq-heading" className="font-display text-2xl font-extrabold tracking-tight">
+                Frequently asked questions
+              </h2>
+              <dl className="mt-6 space-y-4">
+                {seo.faqs.map((f) => (
+                  <div
+                    key={f.q}
+                    className="rounded-2xl border border-[var(--border)] bg-surface/60 p-5"
+                  >
+                    <dt className="font-display font-bold">{f.q}</dt>
+                    <dd className="mt-2 text-sm leading-relaxed text-muted">{f.a}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          )}
         </div>
       </section>
+
+      {tool && seo && (
+        <JsonLd
+          data={[
+            softwareAppSchema({
+              name: tool.name,
+              description: tool.description,
+              path: tool.href,
+              features: seo.features,
+            }),
+            faqSchema(seo.faqs),
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Tools", path: "/tools" },
+              { name: tool.name, path: tool.href },
+            ]),
+          ]}
+        />
+      )}
       <Footer />
     </main>
   );

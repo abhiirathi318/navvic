@@ -7,17 +7,32 @@ import Reveal from "./Reveal";
 
 type FormState = {
   company: string;
+  contactName: string;
   email: string;
+  phone: string;
+  origin: string;
   destinationPort: string;
+  mode: string;
+  incoterm: string;
+  volume: string;
   sourcing: string;
 };
 
 const emptyForm: FormState = {
   company: "",
+  contactName: "",
   email: "",
+  phone: "",
+  origin: "",
   destinationPort: "",
+  mode: "",
+  incoterm: "",
+  volume: "",
   sourcing: "",
 };
+
+const MODES = ["Sea — FCL", "Sea — LCL", "Air freight", "Not sure yet"];
+const INCOTERMS = ["EXW", "FOB", "CIF", "CFR", "DAP", "DDP", "Not sure yet"];
 
 export default function QuoteCTA() {
   const [form, setForm] = useState<FormState>(emptyForm);
@@ -28,12 +43,18 @@ export default function QuoteCTA() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const product = params.get("product");
-    if (product) {
-      setForm((prev) => ({
-        ...prev,
-        sourcing: prev.sourcing || `Quote request for: ${product}`,
-      }));
-    }
+    const origin = params.get("origin");
+    const incoterm = params.get("incoterm");
+    setForm((prev) => ({
+      ...prev,
+      sourcing: prev.sourcing || (product ? `Quote request for: ${product}` : ""),
+      origin: prev.origin || origin || "",
+      incoterm:
+        prev.incoterm ||
+        (incoterm && INCOTERMS.includes(incoterm.toUpperCase())
+          ? incoterm.toUpperCase()
+          : ""),
+    }));
   }, []);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -76,16 +97,18 @@ export default function QuoteCTA() {
           <div className="relative grid gap-10 lg:grid-cols-2">
             <div>
               <h2 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-                Let's fill your next container.
+                Let&apos;s fill your next container.
               </h2>
               <p className="mt-4 max-w-md text-foam-200/80">
-                Tell us what you need and where it's going. Our trade desk replies with indicative
-                pricing and transit times within one business day.
+                Tell us what you need and where it&apos;s going. The more you share, the sharper our
+                first quote. Our trade desk replies with indicative pricing and transit times within
+                one business day.
               </p>
               <div className="mt-8 space-y-3 text-sm text-foam-200/80">
                 <div>📦 Mixed-SKU consolidation welcome</div>
                 <div>🚢 FCL &amp; LCL options on every lane</div>
                 <div>📄 Full customs documentation included</div>
+                <div>🔒 Your details are used only to prepare your quote</div>
               </div>
               <p className="mt-8 text-sm text-foam-200/60">
                 Prefer email?{" "}
@@ -115,18 +138,71 @@ export default function QuoteCTA() {
                     onChange={(v) => updateField("company", v)}
                   />
                   <Field
+                    label="Contact name"
+                    placeholder="Jordan Lee"
+                    value={form.contactName}
+                    onChange={(v) => updateField("contactName", v)}
+                  />
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Field
                     label="Email"
                     type="email"
                     placeholder="you@company.com"
                     value={form.email}
                     onChange={(v) => updateField("email", v)}
                   />
+                  <Field
+                    label="Phone / WhatsApp"
+                    type="tel"
+                    required={false}
+                    optional
+                    placeholder="+971 50 123 4567"
+                    value={form.phone}
+                    onChange={(v) => updateField("phone", v)}
+                  />
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Field
+                    label="Sourcing from"
+                    required={false}
+                    optional
+                    placeholder="Italy, Germany, USA…"
+                    value={form.origin}
+                    onChange={(v) => updateField("origin", v)}
+                  />
+                  <Field
+                    label="Destination port / city"
+                    placeholder="Jebel Ali, Dubai"
+                    value={form.destinationPort}
+                    onChange={(v) => updateField("destinationPort", v)}
+                  />
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Select
+                    label="Shipping mode"
+                    optional
+                    placeholder="Select mode"
+                    options={MODES}
+                    value={form.mode}
+                    onChange={(v) => updateField("mode", v)}
+                  />
+                  <Select
+                    label="Incoterm"
+                    optional
+                    placeholder="Select Incoterm"
+                    options={INCOTERMS}
+                    value={form.incoterm}
+                    onChange={(v) => updateField("incoterm", v)}
+                  />
                 </div>
                 <Field
-                  label="Destination port"
-                  placeholder="Jebel Ali, Dubai"
-                  value={form.destinationPort}
-                  onChange={(v) => updateField("destinationPort", v)}
+                  label="Estimated volume"
+                  required={false}
+                  optional
+                  placeholder="e.g. 2 × 20ft / 10 pallets / 5,000 units / month"
+                  value={form.volume}
+                  onChange={(v) => updateField("volume", v)}
                 />
                 <div className="grid gap-1.5">
                   <label className="text-sm font-medium text-foam-200/80">What are you sourcing?</label>
@@ -164,6 +240,9 @@ export default function QuoteCTA() {
                     </>
                   )}
                 </button>
+                <p className="text-center text-xs text-foam-200/50">
+                  No obligation. We reply within one business day.
+                </p>
               </form>
             )}
           </div>
@@ -173,30 +252,81 @@ export default function QuoteCTA() {
   );
 }
 
+function FieldLabel({ label, optional }: { label: string; optional?: boolean }) {
+  return (
+    <label className="text-sm font-medium text-foam-200/80">
+      {label}
+      {optional && <span className="ml-1 text-xs font-normal text-foam-200/40">(optional)</span>}
+    </label>
+  );
+}
+
 function Field({
   label,
   type = "text",
   placeholder,
   value,
   onChange,
+  required = true,
+  optional = false,
 }: {
   label: string;
   type?: string;
   placeholder: string;
   value: string;
   onChange: (value: string) => void;
+  required?: boolean;
+  optional?: boolean;
 }) {
   return (
     <div className="grid gap-1.5">
-      <label className="text-sm font-medium text-foam-200/80">{label}</label>
+      <FieldLabel label={label} optional={optional} />
       <input
-        required
+        required={required}
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-foam-100 placeholder:text-foam-200/40 outline-none transition focus:border-ocean-300/60"
       />
+    </div>
+  );
+}
+
+function Select({
+  label,
+  options,
+  placeholder,
+  value,
+  onChange,
+  optional = false,
+}: {
+  label: string;
+  options: string[];
+  placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
+  optional?: boolean;
+}) {
+  return (
+    <div className="grid gap-1.5">
+      <FieldLabel label={label} optional={optional} />
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className={`rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none transition focus:border-ocean-300/60 ${
+          value ? "text-foam-100" : "text-foam-200/40"
+        }`}
+      >
+        <option value="" className="text-abyss-900">
+          {placeholder}
+        </option>
+        {options.map((o) => (
+          <option key={o} value={o} className="text-abyss-900">
+            {o}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

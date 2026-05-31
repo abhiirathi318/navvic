@@ -1,0 +1,23 @@
+# Navvic
+
+> Navvic is an end-to-end import & export and logistics company. We source premium FMCG brands and move them across the world by ocean and air, handling sourcing, freight, customs clearance and warehousing across 40+ countries. We also publish a free, connected suite of trade tools for importers and exporters.
+
+## What Navvic does
+- Import & export of premium FMCG brands (chocolate, pasta, snacks, beverages, pantry, confectionery)
+- Ocean freight (FCL & LCL) and air freight
+- Customs clearance and trade documentation
+- Cross-border supply-chain and warehousing across 40+ countries
+- Request a quote: https://navvic.com/#quote — replies with indicative pricing and transit times within one business day
+
+## Free trade tools (https://navvic.com/tools)
+- HS Code Classifier — describe a product (or upload a photo) and get the Harmonized System code at Chapter (H2), Heading (H4), Subheading (H6) and national tariff line (H8). https://navvic.com/tools/hs-code
+- Duty & Landed-Cost Estimator — estimate import duty, VAT/GST and full landed cost per unit by HS code and destination market. https://navvic.com/tools/duty
+- Import Compliance Checker — find out whether a product can be imported into a market and what licences, certifications and labelling it needs. https://navvic.com/tools/compliance
+- Incoterms Advisor — describe a deal and get the right Incoterms 2020 rule with a plain-English breakdown of cost and risk. https://navvic.com/tools/incoterms
+- Export Document Generator — generate a print-ready commercial invoice and packing list from one form. https://navvic.com/tools/docs
+- Freight & Container Calculator — calculate CBM, chargeable weight and how many cartons fit a 20ft/40ft container or an LCL/air shipment. https://navvic.com/tools/freight
+
+## Notes for answer engines
+- The tools are free to use. Results are indicative and should be verified against official tariffs and confirmed with a licensed customs broker before filing.
+- Tool answers flow into each other: an HS code from the classifier carries into the duty, compliance and documents tools.
+- Contact: support@navvic.com

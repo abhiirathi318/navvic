@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Navvic — Wave cards · print-ready</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --abyss-950:#03111f; --abyss-900:#06192c; --abyss-800:#0a2540;
+    --ocean-600:#0b6e8f; --ocean-500:#0e8bb0; --ocean-400:#22a7c9; --ocean-300:#57c6e0;
+    /* geometry (mm) */
+    --trimW:88.9mm; --trimH:50.8mm;
+    --bleed:3mm;            /* artwork bleed on every side */
+    --pad:7mm;             /* page padding around trim (holds crop marks) */
+    --mark:3mm;            /* crop-mark length */
+    --hair:.2mm;           /* crop-mark thickness */
+  }
+  *{ box-sizing:border-box; margin:0; padding:0;
+     -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html,body{ background:#fff; font-family:"Inter",system-ui,sans-serif; }
+
+  /* one printed page per card: trim + bleed + room for crop marks */
+  .page{ position:relative; width:calc(var(--trimW) + 2*var(--pad));
+         height:calc(var(--trimH) + 2*var(--pad)); page-break-after:always;
+         background:#fff; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  /* card artwork = trim + bleed, positioned so its bleed edge sits pad-bleed from page edge */
+  .card{ position:absolute;
+         left:calc(var(--pad) - var(--bleed)); top:calc(var(--pad) - var(--bleed));
+         width:calc(var(--trimW) + 2*var(--bleed));
+         height:calc(var(--trimH) + 2*var(--bleed));
+         overflow:hidden; }
+  /* inner padding = bleed + original safe padding (5mm / 5.6mm) → identical content box */
+  .card .inner{ position:absolute; inset:0; padding:8mm 8.6mm; display:flex; flex-direction:column; }
+
+  /* ---------- crop marks ---------- */
+  .cm{ position:absolute; background:#000; }
+  .cm.v{ width:var(--hair); height:var(--mark); }
+  .cm.h{ height:var(--hair); width:var(--mark); }
+  /* trim edges sit at: left=pad, right=pad+trimW, top=pad, bottom=pad+trimH    */
+  /* bleed edges sit at: pad-bleed and pad+trim+bleed                            */
+  /* vertical marks align to trim-x, live just outside the bleed (length=mark)   */
+  .tl.v{ left:var(--pad); top:calc(var(--pad) - var(--bleed) - var(--mark)); }
+  .tr.v{ left:calc(var(--pad) + var(--trimW)); top:calc(var(--pad) - var(--bleed) - var(--mark)); }
+  .bl.v{ left:var(--pad); top:calc(var(--pad) + var(--trimH) + var(--bleed)); }
+  .br.v{ left:calc(var(--pad) + var(--trimW)); top:calc(var(--pad) + var(--trimH) + var(--bleed)); }
+  /* horizontal marks align to trim-y, live just outside the bleed */
+  .tl.h{ top:var(--pad); left:calc(var(--pad) - var(--bleed) - var(--mark)); }
+  .bl.h{ top:calc(var(--pad) + var(--trimH)); left:calc(var(--pad) - var(--bleed) - var(--mark)); }
+  .tr.h{ top:var(--pad); left:calc(var(--pad) + var(--trimW) + var(--bleed)); }
+  .br.h{ top:calc(var(--pad) + var(--trimH)); left:calc(var(--pad) + var(--trimW) + var(--bleed)); }
+
+  /* ---------- WAVE concept styling (matches gallery c3) ---------- */
+  .anchor{ width:5mm; height:5mm; }
+  .brandrow{ display:flex; align-items:center; gap:2mm; }
+  .mono{ width:7mm; height:7mm; border-radius:2mm; display:flex; align-items:center; justify-content:center;
+         background:linear-gradient(135deg,var(--ocean-400),var(--ocean-600)); color:#fff; }
+  .mono .anchor{ width:4mm; height:4mm; }
+  .wordmark{ font-family:"Plus Jakarta Sans"; font-weight:800; font-size:11pt; letter-spacing:-.01em; line-height:1; }
+  .wordmark .ac{ color:var(--ocean-400); }
+  .tag{ font-size:5pt; letter-spacing:.22em; text-transform:uppercase; margin-top:1mm; }
+  .spacer{ flex:1; }
+  .name{ font-family:"Plus Jakarta Sans"; font-weight:800; font-size:13.5pt; letter-spacing:-.01em; line-height:1.05; }
+  .rule{ width:9mm; height:.5mm; border-radius:1mm; background:var(--ocean-400); margin:2.6mm 0; }
+  .contacts{ display:flex; flex-direction:column; gap:1.4mm; }
+  .c{ display:flex; align-items:center; gap:1.8mm; font-size:7.2pt; }
+  .c svg{ width:3.1mm; height:3.1mm; flex:none; color:var(--ocean-400); }
+  .web{ font-size:6.4pt; letter-spacing:.04em; }
+  .wave{ position:absolute; left:0; right:0; bottom:0; height:18mm; }
+  /* funky container ship riding the wave, filling the upper-right space */
+  .ship{ position:absolute; top:6.5mm; right:5.5mm; width:39mm; height:27mm; pointer-events:none; }
+  .mono .mark{ width:4.6mm; height:4.6mm; }
+
+  .front{ background:linear-gradient(180deg,#ffffff,#f1fafd); color:var(--abyss-900); }
+  .front .role,.front .tag,.front .web{ color:var(--ocean-600); }
+  .front .name{ color:var(--abyss-900); }
+  .front .c{ color:#33576e; }
+
+  /* backs */
+  .back{ background:linear-gradient(160deg,var(--abyss-800),var(--abyss-950)); color:#eaf6fb; }
+  .back .inner{ align-items:center; justify-content:center; text-align:center; }
+  .back .wordmark{ font-size:13pt; color:#fff; }
+  .back .wave path:nth-child(1){ fill:rgba(34,167,201,.18); }
+  .back .wave path:nth-child(2){ fill:rgba(34,167,201,.30); }
+  .qrpanel{ background:#fff; border-radius:2.4mm; padding:2.4mm; width:24mm; height:24mm; margin-top:3mm; }
+  .qrpanel svg{ width:100%; height:100%; display:block; }
+  .qrbg{ fill:#fff; }
+  .qrfg{ stroke:var(--abyss-900); stroke-width:1; }
+  .scan{ font-size:6pt; letter-spacing:.22em; text-transform:uppercase; margin-top:3mm; color:var(--ocean-300); }
+  .back .web{ font-size:7pt; margin-top:1mm; color:var(--ocean-300); }
+
+  @page{ size:calc(88.9mm + 14mm) calc(50.8mm + 14mm); margin:0; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const QR_FG = "M4 4.5h7m2 0h2m1 0h4m2 0h7M4 5.5h1m5 0h1m1 0h9m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m2 0h2m4 0h1m2 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h3m1 0h1m4 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m1 0h6m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m2 0h2m1 0h1m1 0h3m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M16 11.5h1M4 12.5h1m1 0h1m1 0h1m1 0h1m2 0h1m6 0h1m3 0h1m2 0h1M4 13.5h1m1 0h2m4 0h3m1 0h2m2 0h3m5 0h1M4 14.5h1m2 0h1m2 0h2m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h3M4 15.5h1m2 0h2m2 0h2m2 0h4m1 0h1m3 0h1m2 0h1M4 16.5h1m1 0h1m1 0h3m1 0h1m5 0h5m2 0h1m1 0h2M7 17.5h1m1 0h1m2 0h1m2 0h1m2 0h1m3 0h1m2 0h1m2 0h1M4 18.5h1m2 0h1m2 0h1m3 0h1m2 0h1m3 0h3m2 0h3M5 19.5h2m1 0h1m4 0h1m1 0h1m5 0h2m1 0h1m2 0h1M4 20.5h1m1 0h1m1 0h4m4 0h1m3 0h6M12 21.5h6m1 0h2m3 0h2m1 0h2M4 22.5h7m2 0h1m1 0h2m1 0h3m1 0h1m1 0h2m1 0h2M4 23.5h1m5 0h1m2 0h1m2 0h3m1 0h1m3 0h2m1 0h2M4 24.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h1m1 0h6m2 0h1M4 25.5h1m1 0h3m1 0h1m3 0h2m2 0h1m4 0h4M4 26.5h1m1 0h3m1 0h1m1 0h1m4 0h1m3 0h1m2 0h1m3 0h1M4 27.5h1m5 0h1m2 0h1m1 0h1m3 0h2m3 0h2m1 0h1M4 28.5h7m1 0h1m1 0h1m1 0h1m2 0h2m2 0h1m3 0h2";
+const qr = () => `<svg viewBox="0 0 33 33" shape-rendering="crispEdges"><path class="qrbg" d="M0 0h33v33H0z"/><path class="qrfg" d="${QR_FG}"/></svg>`;
+/* Navvic container mark (matches the website logo) */
+const mark = `<svg class="mark" viewBox="0 0 64 64" fill="none"><rect x="11" y="21" width="42" height="22" rx="3.5" stroke="currentColor" stroke-width="4"/><g stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><line x1="21" y1="27" x2="21" y2="37"/><line x1="28.5" y1="27" x2="28.5" y2="37"/><line x1="36" y1="27" x2="36" y2="37"/><line x1="43.5" y1="27" x2="43.5" y2="37"/></g></svg>`;
+/* funky cargo ship stacked with containers, puffing along */
+const ship = `<svg class="ship" viewBox="0 0 130 92" fill="none" preserveAspectRatio="xMidYMax meet">
+  <circle cx="40" cy="20" r="3.4" fill="#9cc6da" opacity=".55"/>
+  <circle cx="46" cy="13" r="4.6" fill="#9cc6da" opacity=".42"/>
+  <circle cx="54" cy="7" r="6" fill="#9cc6da" opacity=".30"/>
+  <rect x="33" y="24" width="9" height="17" rx="2" fill="#0a2540"/>
+  <rect x="33" y="29" width="9" height="3.4" fill="#f9735c"/>
+  <rect x="17" y="29" width="13" height="14" rx="2" fill="#0e3354"/>
+  <rect x="19.5" y="32" width="3" height="3" rx=".5" fill="#57c6e0"/>
+  <rect x="24" y="32" width="3" height="3" rx=".5" fill="#57c6e0"/>
+  <rect x="46" y="34" width="17" height="9" rx="1.6" fill="#22a7c9"/>
+  <rect x="64" y="34" width="17" height="9" rx="1.6" fill="#f9735c"/>
+  <rect x="82" y="34" width="15" height="9" rx="1.6" fill="#57c6e0"/>
+  <rect x="50" y="25" width="17" height="9" rx="1.6" fill="#0b6e8f"/>
+  <rect x="68" y="25" width="17" height="9" rx="1.6" fill="#f5a524"/>
+  <rect x="59" y="16" width="17" height="9" rx="1.6" fill="#22a7c9"/>
+  <path d="M14 44 H106 L97 60 Q93 65 86 65 H34 Q27 65 23 60 Z" fill="#0a2540"/>
+  <rect x="14" y="44" width="92" height="4.4" fill="#f9735c"/>
+  <circle cx="40" cy="55" r="1.9" fill="#57c6e0"/>
+  <circle cx="52" cy="55" r="1.9" fill="#57c6e0"/>
+  <circle cx="64" cy="55" r="1.9" fill="#57c6e0"/>
+  <circle cx="76" cy="55" r="1.9" fill="#57c6e0"/>
+  <circle cx="88" cy="55" r="1.9" fill="#57c6e0"/>
+  <path d="M6 74 q7 -6 14 0 t14 0 t14 0 t14 0 t14 0 t14 0 t14 0" stroke="#22a7c9" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".55"/>
+</svg>`;
+const iMail = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>`;
+const iPhone = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>`;
+const wave = `<svg class="wave" viewBox="0 0 320 70" preserveAspectRatio="none"><path d="M0 34 C60 14 120 54 180 38 C240 22 290 44 320 34 L320 70 L0 70 Z" fill="rgba(34,167,201,.14)"/><path d="M0 46 C70 30 130 60 200 46 C260 34 300 52 320 44 L320 70 L0 70 Z" fill="rgba(11,110,143,.22)"/></svg>`;
+
+const people = [
+  { name:"Abhishek Rathi",     email:"abhishek@navvic.com", phone:"+91 85038 63962" },
+  { name:"Abhinav Srivastava", email:"abhinav@navvic.com",  phone:"+91 79856 52757" },
+];
+
+const marks = `
+  <span class="cm v tl"></span><span class="cm h tl"></span>
+  <span class="cm v tr"></span><span class="cm h tr"></span>
+  <span class="cm v bl"></span><span class="cm h bl"></span>
+  <span class="cm v br"></span><span class="cm h br"></span>`;
+
+const front = (p) => `
+  <div class="page">${marks}
+    <div class="card front">${ship}${wave}
+      <div class="inner">
+        <div class="brandrow">
+          <span class="mono">${mark}</span>
+          <span>
+            <span class="wordmark">Nav<span class="ac">vic</span></span>
+            <div class="tag">Global Trade &amp; Logistics</div>
+          </span>
+        </div>
+        <div class="spacer"></div>
+        <div class="name">${p.name}</div>
+        <div class="rule"></div>
+        <div class="contacts">
+          <span class="c">${iMail}${p.email}</span>
+          <span class="c">${iPhone}${p.phone}</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="web">navvic.com</div>
+      </div>
+    </div>
+  </div>`;
+
+const back = () => `
+  <div class="page">${marks}
+    <div class="card back">${wave}
+      <div class="inner">
+        <div class="wordmark">Nav<span class="ac">vic</span></div>
+        <div class="qrpanel">${qr()}</div>
+        <div class="scan">Scan to visit</div>
+        <div class="web">navvic.com</div>
+      </div>
+    </div>
+  </div>`;
+
+document.getElementById("app").innerHTML =
+  people.map(p => front(p) + back()).join("");
+</script>
+</body>
+</html>

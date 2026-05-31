@@ -10,8 +10,14 @@ function isValidEmail(email: string): boolean {
 export async function POST(req: NextRequest) {
   let body: {
     company?: string;
+    contactName?: string;
     email?: string;
+    phone?: string;
+    origin?: string;
     destinationPort?: string;
+    mode?: string;
+    incoterm?: string;
+    volume?: string;
     sourcing?: string;
   };
 
@@ -22,12 +28,21 @@ export async function POST(req: NextRequest) {
   }
 
   const company = body.company?.trim() ?? "";
+  const contactName = body.contactName?.trim() ?? "";
   const email = body.email?.trim() ?? "";
+  const phone = body.phone?.trim() ?? "";
+  const origin = body.origin?.trim() ?? "";
   const destinationPort = body.destinationPort?.trim() ?? "";
+  const mode = body.mode?.trim() ?? "";
+  const incoterm = body.incoterm?.trim() ?? "";
+  const volume = body.volume?.trim() ?? "";
   const sourcing = body.sourcing?.trim() ?? "";
 
-  if (!company || !email || !destinationPort || !sourcing) {
-    return NextResponse.json({ error: "All fields are required" }, { status: 400 });
+  if (!company || !contactName || !email || !destinationPort || !sourcing) {
+    return NextResponse.json(
+      { error: "Please fill in company, contact name, email, destination port and what you're sourcing." },
+      { status: 400 },
+    );
   }
 
   if (!isValidEmail(email)) {
@@ -35,7 +50,18 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    await sendQuoteEmail({ company, email, destinationPort, sourcing });
+    await sendQuoteEmail({
+      company,
+      contactName,
+      email,
+      phone,
+      origin,
+      destinationPort,
+      mode,
+      incoterm,
+      volume,
+      sourcing,
+    });
     return NextResponse.json({ ok: true });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Failed to send email";

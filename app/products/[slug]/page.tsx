@@ -6,6 +6,8 @@ import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
 import BrandLogo from "@/components/BrandLogo";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import { url, productSchema, breadcrumbSchema } from "@/lib/seo";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -14,7 +16,27 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const product = getProduct(slug);
-  return { title: product ? `${product.name} | Navvic` : "Product | Navvic" };
+  if (!product) return { title: "Product" };
+  const description = `${product.blurb} Import & export ${product.brand} from ${product.origin}. MOQ ${product.moq}, ${product.containerLoad}. Request a wholesale quote from Navvic.`;
+  return {
+    title: `${product.name} — Wholesale Import & Export`,
+    description,
+    keywords: [
+      product.name,
+      product.brand,
+      `${product.brand} wholesale`,
+      `import ${product.brand}`,
+      `${product.category} import export`,
+      "FMCG wholesale",
+    ],
+    alternates: { canonical: `/products/${product.slug}` },
+    openGraph: {
+      type: "website",
+      title: `${product.name} | Navvic`,
+      description,
+      url: url(`/products/${product.slug}`),
+    },
+  };
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -28,6 +50,22 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   return (
     <main className="overflow-x-hidden">
+      <JsonLd
+        data={[
+          productSchema({
+            name: product.name,
+            brand: product.brand,
+            category: product.category,
+            description: product.description,
+            path: `/products/${product.slug}`,
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Catalog", path: "/products" },
+            { name: product.name, path: `/products/${product.slug}` },
+          ]),
+        ]}
+      />
       <section className="relative pt-32">
         <div className="absolute inset-0 -z-10 h-80 bg-gradient-to-b from-foam-100 to-transparent dark:from-abyss-900" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6">

@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Navvic — Logo Concepts</title>
+<style>
+  :root{
+    --ocean-400:#22a7c9; --ocean-500:#1490b3; --ocean-600:#0b6e8f;
+    --abyss-800:#0a2540; --abyss-900:#06192c; --foam-100:#e3f7fc;
+    --ink:#0a2540;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
+    background:#f4f8fb; color:var(--ink); padding:48px;
+  }
+  h1{font-size:34px; font-weight:800; letter-spacing:-.02em; margin:0 0 4px}
+  .sub{color:#5a7184; margin:0 0 36px; font-size:15px}
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:28px; max-width:1100px}
+  .card{
+    background:#fff; border:1px solid #e2ecf2; border-radius:24px; overflow:hidden;
+    box-shadow:0 10px 30px rgba(10,37,64,.06);
+  }
+  .num{
+    display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:800;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--ocean-600);
+  }
+  .head{padding:22px 26px 8px; display:flex; justify-content:space-between; align-items:flex-start}
+  .name{font-weight:800; font-size:19px; margin:2px 0 0}
+  .desc{color:#5a7184; font-size:13px; margin:4px 0 0; max-width:300px}
+  /* swatch rows */
+  .rows{display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px solid #eef3f7}
+  .swatch{padding:26px; display:flex; align-items:center; gap:16px; min-height:118px}
+  .swatch.light{background:#fff}
+  .swatch.dark{background:linear-gradient(135deg,var(--abyss-800),var(--abyss-900))}
+  .swatch.dark .word{color:#fff}
+  .word{font-weight:800; font-size:26px; letter-spacing:-.02em; color:var(--ink)}
+  .word .v{color:var(--ocean-400)}
+  .markbox{flex:0 0 auto}
+  .iconpreview{display:flex; gap:14px; padding:18px 26px; border-top:1px solid #eef3f7; align-items:center}
+  .chip{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+  .chip.grad{background:linear-gradient(135deg,var(--ocean-400),var(--abyss-800))}
+  .chip.flat{background:var(--ocean-600)}
+  .chip.dark{background:var(--abyss-900)}
+  .tiny{font-size:11px;color:#90a4b4}
+</style>
+</head>
+<body>
+  <h1>Navvic — Logo Concepts</h1>
+  <p class="sub">Six directions on the ocean palette. Each shown as a standalone mark (light + dark) and as a favicon-size app chip. <em>Navvic ≈ navigate.</em></p>
+
+  <div class="grid">
+
+    <!-- 1. Compass N -->
+    <div class="card">
+      <div class="head">
+        <div>
+          <div class="num">● 01 — Compass N</div>
+          <div class="name">Heading</div>
+          <p class="desc">The “N” doubles as a compass needle pointing true north-east — direction, navigation, momentum.</p>
+        </div>
+      </div>
+      <div class="rows">
+        <div class="swatch light">
+          <span class="markbox">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="29" stroke="#cfe2ec" stroke-width="2"/>
+              <path d="M16 46V18l32 28V18" stroke="#0a2540" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M48 18l-4 9 13-2-9-7Z" fill="#22a7c9"/>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+        <div class="swatch dark">
+          <span class="markbox">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="29" stroke="#1d4763" stroke-width="2"/>
+              <path d="M16 46V18l32 28V18" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M48 18l-4 9 13-2-9-7Z" fill="#22a7c9"/>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+      </div>
+      <div class="iconpreview">
+        <span class="chip grad">
+          <svg width="26" height="26" viewBox="0 0 64 64" fill="none"><path d="M16 46V18l32 28V18" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 18l-4 9 13-2-9-7Z" fill="#fff"/></svg>
+        </span>
+        <span class="tiny">app icon</span>
+      </div>
+    </div>
+
+    <!-- 2. Waypoint Route -->
+    <div class="card">
+      <div class="head">
+        <div>
+          <div class="num">● 02 — Waypoint</div>
+          <div class="name">Lane</div>
+          <p class="desc">A trade lane plotted point-to-point: origin pin, route arc, destination. Pure logistics.</p>
+        </div>
+      </div>
+      <div class="rows">
+        <div class="swatch light">
+          <span class="markbox">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+              <path d="M12 44C20 24 44 40 52 20" stroke="#22a7c9" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="1 9"/>
+              <circle cx="12" cy="44" r="6.5" fill="#0a2540"/>
+              <path d="M52 20c0-4-3.2-7-7-7s-7 3-7 7c0 5 7 11 7 11s7-6 7-11Z" fill="#22a7c9"/>
+              <circle cx="45" cy="20" r="2.6" fill="#fff"/>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+        <div class="swatch dark">
+          <span class="markbox">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+              <path d="M12 44C20 24 44 40 52 20" stroke="#22a7c9" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="1 9"/>
+              <circle cx="12" cy="44" r="6.5" fill="#fff"/>
+              <path d="M52 20c0-4-3.2-7-7-7s-7 3-7 7c0 5 7 11 7 11s7-6 7-11Z" fill="#22a7c9"/>
+              <circle cx="45" cy="20" r="2.6" fill="#0a2540"/>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+      </div>
+      <div class="iconpreview">
+        <span class="chip dark">
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none"><path d="M12 44C20 24 44 40 52 20" stroke="#22a7c9" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 9"/><circle cx="12" cy="44" r="6.5" fill="#fff"/><path d="M52 20c0-4-3.2-7-7-7s-7 3-7 7c0 5 7 11 7 11s7-6 7-11Z" fill="#fff"/></svg>
+        </span>
+        <span class="tiny">app icon</span>
+      </div>
+    </div>
+
+    <!-- 3. Container -->
+    <div class="card">
+      <div class="head">
+        <div>
+          <div class="num">● 03 — Cargo</div>
+          <div class="name">Stack</div>
+          <p class="desc">A shipping container reduced to its corrugations, with an “N” negative space in the ridges.</p>
+        </div>
+      </div>
+      <div class="rows">
+        <div class="swatch light">
+          <span class="markbox">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+              <rect x="10" y="18" width="44" height="28" rx="4" fill="#0a2540"/>
+              <g stroke="#22a7c9" stroke-width="3.2" stroke-linecap="round">
+                <line x1="20" y1="24" x2="20" y2="40"/>
+                <line x1="28" y1="24" x2="28" y2="40"/>
+                <line x1="36" y1="24" x2="36" y2="40"/>
+                <line x1="44" y1="24" x2="44" y2="40"/>
+              </g>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+        <div class="swatch dark">
+          <span class="markbox">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+              <rect x="10" y="18" width="44" height="28" rx="4" fill="#0e3350"/>
+              <g stroke="#22a7c9" stroke-width="3.2" stroke-linecap="round">
+                <line x1="20" y1="24" x2="20" y2="40"/>
+                <line x1="28" y1="24" x2="28" y2="40"/>
+                <line x1="36" y1="24" x2="36" y2="40"/>
+                <line x1="44" y1="24" x2="44" y2="40"/>
+              </g>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+      </div>
+      <div class="iconpreview">
+        <span class="chip flat">
+          <svg width="30" height="30" viewBox="0 0 64 64" fill="none"><g stroke="#fff" stroke-width="3.6" stroke-linecap="round"><line x1="20" y1="22" x2="20" y2="42"/><line x1="28" y1="22" x2="28" y2="42"/><line x1="36" y1="22" x2="36" y2="42"/><line x1="44" y1="22" x2="44" y2="42"/></g></svg>
+        </span>
+        <span class="tiny">app icon</span>
+      </div>
+    </div>
+
+    <!-- 4. Anchor refined -->
+    <div class="card">
+      <div class="head">
+        <div>
+          <div class="num">● 04 — Maritime</div>
+          <div class="name">Anchor</div>
+          <p class="desc">A refined take on the current anchor — steadier weight, cleaner crown. Familiar, trustworthy.</p>
+        </div>
+      </div>
+      <div class="rows">
+        <div class="swatch light">
+          <span class="markbox">
+            <svg width="54" height="54" viewBox="0 0 64 64" fill="none" stroke="#0a2540" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="32" cy="15" r="5"/>
+              <line x1="32" y1="50" x2="32" y2="22"/>
+              <path d="M16 34h-5a21 21 0 0 0 42 0h-5" stroke="#22a7c9"/>
+              <line x1="23" y1="26" x2="41" y2="26"/>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+        <div class="swatch dark">
+          <span class="markbox">
+            <svg width="54" height="54" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="32" cy="15" r="5"/>
+              <line x1="32" y1="50" x2="32" y2="22"/>
+              <path d="M16 34h-5a21 21 0 0 0 42 0h-5" stroke="#22a7c9"/>
+              <line x1="23" y1="26" x2="41" y2="26"/>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+      </div>
+      <div class="iconpreview">
+        <span class="chip grad">
+          <svg width="26" height="26" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="15" r="5"/><line x1="32" y1="50" x2="32" y2="22"/><path d="M16 34h-5a21 21 0 0 0 42 0h-5"/><line x1="23" y1="26" x2="41" y2="26"/></svg>
+        </span>
+        <span class="tiny">app icon</span>
+      </div>
+    </div>
+
+    <!-- 5. Compass rose -->
+    <div class="card">
+      <div class="head">
+        <div>
+          <div class="num">● 05 — Bearing</div>
+          <div class="name">Rose</div>
+          <p class="desc">A four-point compass star — the universal mark of trade routes and wayfinding.</p>
+        </div>
+      </div>
+      <div class="rows">
+        <div class="swatch light">
+          <span class="markbox">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="28" stroke="#cfe2ec" stroke-width="2"/>
+              <path d="M32 8 38 30 32 56 26 30Z" fill="#0a2540"/>
+              <path d="M8 32 30 26 56 32 30 38Z" fill="#22a7c9"/>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+        <div class="swatch dark">
+          <span class="markbox">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="28" stroke="#1d4763" stroke-width="2"/>
+              <path d="M32 8 38 30 32 56 26 30Z" fill="#fff"/>
+              <path d="M8 32 30 26 56 32 30 38Z" fill="#22a7c9"/>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+      </div>
+      <div class="iconpreview">
+        <span class="chip dark">
+          <svg width="30" height="30" viewBox="0 0 64 64" fill="none"><path d="M32 8 38 30 32 56 26 30Z" fill="#fff"/><path d="M8 32 30 26 56 32 30 38Z" fill="#22a7c9"/></svg>
+        </span>
+        <span class="tiny">app icon</span>
+      </div>
+    </div>
+
+    <!-- 6. Globe routes -->
+    <div class="card">
+      <div class="head">
+        <div>
+          <div class="num">● 06 — Global</div>
+          <div class="name">Orbit</div>
+          <p class="desc">A globe wrapped by an orbiting trade arc with a node — worldwide import &amp; export reach.</p>
+        </div>
+      </div>
+      <div class="rows">
+        <div class="swatch light">
+          <span class="markbox">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="18" fill="#0a2540"/>
+              <path d="M14 32h36M32 14c8 5 8 31 0 36M32 14c-8 5-8 31 0 36" stroke="#3a6c88" stroke-width="2"/>
+              <ellipse cx="32" cy="32" rx="27" ry="11" transform="rotate(-30 32 32)" stroke="#22a7c9" stroke-width="3.4" fill="none"/>
+              <circle cx="51" cy="20.5" r="4.5" fill="#22a7c9"/>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+        <div class="swatch dark">
+          <span class="markbox">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="18" fill="#0e3350"/>
+              <path d="M14 32h36M32 14c8 5 8 31 0 36M32 14c-8 5-8 31 0 36" stroke="#3a6c88" stroke-width="2"/>
+              <ellipse cx="32" cy="32" rx="27" ry="11" transform="rotate(-30 32 32)" stroke="#22a7c9" stroke-width="3.4" fill="none"/>
+              <circle cx="51" cy="20.5" r="4.5" fill="#fff"/>
+            </svg>
+          </span>
+          <span class="word">Nav<span class="v">vic</span></span>
+        </div>
+      </div>
+      <div class="iconpreview">
+        <span class="chip grad">
+          <svg width="30" height="30" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="15" stroke="#fff" stroke-width="3" fill="none"/><ellipse cx="32" cy="32" rx="27" ry="11" transform="rotate(-30 32 32)" stroke="#fff" stroke-width="3.4" fill="none"/><circle cx="51" cy="20.5" r="4.5" fill="#fff"/></svg>
+        </span>
+        <span class="tiny">app icon</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

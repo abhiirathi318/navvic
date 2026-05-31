@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Anchor } from "lucide-react";
+import NavvicMark from "./NavvicMark";
 
 export default function Footer() {
   return (
@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="md:col-span-2">
           <Link href="/" className="flex items-center gap-2.5">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-ocean-400 to-abyss-800 text-white">
-              <Anchor size={20} />
+              <NavvicMark size={22} />
             </span>
             <span className="font-display text-xl font-extrabold">
               Nav<span className="text-ocean-400">vic</span>

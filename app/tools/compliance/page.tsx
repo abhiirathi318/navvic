@@ -1,12 +1,9 @@
 import { ShieldCheck } from "lucide-react";
 import ComplianceTool from "@/components/ComplianceTool";
 import ToolPageShell from "@/components/ToolPageShell";
+import { buildToolMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Import Compliance Checker | Navvic Tools",
-  description:
-    "Check whether a product can be imported into a market and what licences, certifications and labelling it needs.",
-};
+export const metadata = buildToolMetadata("compliance");
 
 export default function CompliancePage() {
   return (
@@ -15,6 +12,7 @@ export default function CompliancePage() {
       badge="AI-powered"
       title="Import Compliance"
       gradient="Checker"
+      slug="compliance"
       description="Describe a product or upload a photo, pick the destination market, and see import licences, certifications, labelling rules and restrictions before your cargo ships."
     >
       <ComplianceTool />

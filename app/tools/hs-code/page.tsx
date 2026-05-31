@@ -2,12 +2,15 @@ import Link from "next/link";
 import { ArrowLeft, ScanSearch } from "lucide-react";
 import HsCodeTool from "@/components/HsCodeTool";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import { getTool } from "@/lib/tools";
+import { toolSeo } from "@/lib/tool-seo";
+import { buildToolMetadata, softwareAppSchema, faqSchema, breadcrumbSchema } from "@/lib/seo";
 
-export const metadata = {
-  title: "HS Code Classifier | Navvic Tools",
-  description:
-    "Match plain-English product descriptions to Harmonized System codes at H2, H4, H6 and H8 levels.",
-};
+export const metadata = buildToolMetadata("hs-code");
+
+const tool = getTool("hs-code")!;
+const seo = toolSeo["hs-code"];
 
 export default function HsCodePage() {
   return (
@@ -46,8 +49,39 @@ export default function HsCodePage() {
           <div className="mt-10">
             <HsCodeTool />
           </div>
+
+          <section className="mt-16" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" className="font-display text-2xl font-extrabold tracking-tight">
+              Frequently asked questions
+            </h2>
+            <dl className="mt-6 space-y-4">
+              {seo.faqs.map((f) => (
+                <div key={f.q} className="rounded-2xl border border-[var(--border)] bg-surface/60 p-5">
+                  <dt className="font-display font-bold">{f.q}</dt>
+                  <dd className="mt-2 text-sm leading-relaxed text-muted">{f.a}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
         </div>
       </section>
+
+      <JsonLd
+        data={[
+          softwareAppSchema({
+            name: tool.name,
+            description: tool.description,
+            path: tool.href,
+            features: seo.features,
+          }),
+          faqSchema(seo.faqs),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Tools", path: "/tools" },
+            { name: tool.name, path: tool.href },
+          ]),
+        ]}
+      />
       <Footer />
     </main>
   );

@@ -11,11 +11,43 @@ import {
 import { tools, type ToolIcon } from "@/lib/tools";
 import ToolCard from "@/components/ToolCard";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import { url, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "Trade Tools | Navvic",
+  title: "Free Trade Tools for Importers & Exporters",
   description:
-    "A free, connected toolkit for importers and exporters: classify HS codes, estimate landed cost, check compliance, choose Incoterms, generate documents and plan freight.",
+    "A free, connected toolkit for importers and exporters: HS code lookup, import duty & landed-cost calculator, compliance checker, Incoterms advisor, commercial invoice generator and freight/container calculator.",
+  keywords: [
+    "free trade tools",
+    "import export tools",
+    "HS code lookup",
+    "import duty calculator",
+    "landed cost calculator",
+    "Incoterms advisor",
+    "commercial invoice generator",
+    "CBM container calculator",
+  ],
+  alternates: { canonical: "/tools" },
+  openGraph: {
+    type: "website",
+    title: "Free Trade Tools for Importers & Exporters | Navvic",
+    description:
+      "Classify HS codes, estimate landed cost, check compliance, choose Incoterms, generate documents and plan freight — free.",
+    url: url("/tools"),
+  },
+};
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Navvic free trade tools",
+  itemListElement: tools.map((t, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: url(t.href),
+    name: t.name,
+  })),
 };
 
 const icons: Record<ToolIcon, typeof ScanSearch> = {
@@ -100,6 +132,15 @@ export default function ToolsPage() {
           confirm with a licensed customs broker before you file.
         </p>
       </section>
+      <JsonLd
+        data={[
+          itemListSchema,
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Tools", path: "/tools" },
+          ]),
+        ]}
+      />
       <Footer />
     </main>
   );
