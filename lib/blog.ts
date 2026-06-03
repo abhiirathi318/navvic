@@ -7,6 +7,15 @@ import HsCodesExplained from "@/components/blog/posts/HsCodesExplained";
 import Incoterms2020Guide from "@/components/blog/posts/Incoterms2020Guide";
 import FclVsLclVsAir from "@/components/blog/posts/FclVsLclVsAir";
 import SourcingFmcgBrands from "@/components/blog/posts/SourcingFmcgBrands";
+import BondedWarehousingGuide from "@/components/blog/posts/BondedWarehousingGuide";
+import ColdChainShipping from "@/components/blog/posts/ColdChainShipping";
+import CustomsClearanceGuide from "@/components/blog/posts/CustomsClearanceGuide";
+import ContainerConsolidation from "@/components/blog/posts/ContainerConsolidation";
+import ChoosingFreightForwarder from "@/components/blog/posts/ChoosingFreightForwarder";
+import ExportDocumentsChecklist from "@/components/blog/posts/ExportDocumentsChecklist";
+import DemurrageDetention from "@/components/blog/posts/DemurrageDetention";
+import OceanFreightRates2026 from "@/components/blog/posts/OceanFreightRates2026";
+import LettersOfCredit from "@/components/blog/posts/LettersOfCredit";
 
 export type BlogPost = {
   slug: string;
@@ -146,6 +155,213 @@ export const posts: BlogPost[] = [
     relatedTools: ["hs-code", "compliance", "freight"],
     relatedPosts: ["fcl-vs-lcl-vs-air", "incoterms-2020-guide"],
   },
+  {
+    slug: "bonded-warehousing-guide",
+    title: "Bonded Warehousing Explained: Defer Duty and Free Up Cash",
+    description:
+      "What a customs bonded warehouse is, how deferring import duty and tax until goods sell protects your cash flow, when re-export saves duty entirely, and who benefits most — with a worked example.",
+    excerpt:
+      "A bonded warehouse moves your duty bill from the day goods land to the day they sell — and sometimes removes it entirely. Here's how to use one.",
+    date: "2026-04-21",
+    author: "Navvic Trade Desk",
+    readingTime: 7,
+    category: "Warehousing",
+    tags: ["Bonded warehouse", "Duty deferment", "Cash flow", "Customs"],
+    keywords: [
+      "bonded warehouse",
+      "what is a bonded warehouse",
+      "customs bonded warehouse",
+      "duty deferment",
+      "deferred import duty",
+      "bonded storage",
+    ],
+    relatedTools: ["duty", "compliance", "hs-code"],
+    relatedPosts: ["cold-chain-shipping", "customs-clearance-guide"],
+  },
+  {
+    slug: "cold-chain-shipping",
+    title: "Cold Chain Shipping for Chocolate & Perishables: Keeping FMCG Intact",
+    description:
+      "How cold-chain ocean freight actually works — reefer containers, pre-cooling, temperature monitoring and where the chain breaks — so your chocolate, dairy and perishables arrive saleable, not spoiled.",
+    excerpt:
+      "Premium chocolate can leave perfect and arrive ruined without a single drop. In cold-chain FMCG, the chain is the product. Here's how to keep it intact.",
+    date: "2026-05-05",
+    author: "Abhinav Srivastava",
+    readingTime: 8,
+    category: "Cold chain",
+    tags: ["Cold chain", "Reefer", "Perishables", "Chocolate"],
+    keywords: [
+      "cold chain shipping",
+      "reefer container",
+      "refrigerated shipping",
+      "cold chain logistics",
+      "shipping chocolate internationally",
+      "temperature controlled freight",
+    ],
+    relatedTools: ["freight", "compliance", "duty"],
+    relatedPosts: ["bonded-warehousing-guide", "fcl-vs-lcl-vs-air"],
+  },
+  {
+    slug: "customs-clearance-guide",
+    title: "Customs Clearance, Step by Step: What Actually Happens at the Port",
+    description:
+      "A plain-English walkthrough of the customs clearance process — entry declaration, duty assessment, inspection and release — plus the documents that drive it and how to clear faster every time.",
+    excerpt:
+      "A container can cross an ocean flawlessly and then sit for a week because one document was wrong. Here's how clearance really works — and how to speed it up.",
+    date: "2026-05-19",
+    author: "Abhishek Rathi",
+    readingTime: 8,
+    category: "Compliance",
+    tags: ["Customs clearance", "Customs broker", "Import process", "Compliance"],
+    keywords: [
+      "customs clearance",
+      "customs clearance process",
+      "how does customs clearance work",
+      "import customs clearance",
+      "customs broker",
+      "clear customs faster",
+    ],
+    relatedTools: ["compliance", "hs-code", "duty"],
+    relatedPosts: ["export-documents-checklist", "demurrage-and-detention"],
+  },
+  {
+    slug: "container-consolidation",
+    title: "Container Consolidation: How Mixed-SKU Shipping Cuts Your Freight Bill",
+    description:
+      "Why a half-empty container costs nearly the same as a full one, the three kinds of consolidation, the FCL-vs-LCL break-even, and how filling the box lowers your freight cost per unit.",
+    excerpt:
+      "Ocean freight is priced by the box, not the cubic metre you use. Every gap of air is freight you throw away. Consolidation is how you stop.",
+    date: "2026-06-02",
+    author: "Navvic Trade Desk",
+    readingTime: 8,
+    category: "Freight",
+    tags: ["Consolidation", "LCL", "FCL", "CBM", "Freight cost"],
+    keywords: [
+      "container consolidation",
+      "cargo consolidation",
+      "LCL consolidation",
+      "freight consolidation",
+      "mixed SKU container",
+      "fill container rate",
+    ],
+    relatedTools: ["freight", "duty", "hs-code"],
+    relatedPosts: ["fcl-vs-lcl-vs-air", "ocean-freight-rates-2026"],
+  },
+  {
+    slug: "choosing-a-freight-forwarder",
+    title: "How to Choose a Freight Forwarder in 2026 (Flexport, Maersk, DHL & the Alternatives)",
+    description:
+      "A buyer's guide to choosing a freight forwarder — from mega-forwarders like Kuehne+Nagel, DHL and DSV to digital players like Flexport and Forto to specialist FMCG desks — with the questions and red flags that actually matter.",
+    excerpt:
+      "The biggest forwarder isn't automatically the best one for you. Here's how the landscape breaks down — and the questions that separate a forwarder who saves you money from one who quietly costs you.",
+    date: "2026-05-26",
+    author: "Abhishek Rathi",
+    readingTime: 9,
+    category: "Freight",
+    tags: ["Freight forwarder", "Flexport", "Logistics", "Carriers"],
+    keywords: [
+      "how to choose a freight forwarder",
+      "best freight forwarders",
+      "Flexport alternatives",
+      "freight forwarder comparison",
+      "Kuehne Nagel vs DHL",
+      "FMCG freight forwarder",
+    ],
+    relatedTools: ["duty", "freight", "incoterms"],
+    relatedPosts: ["ocean-freight-rates-2026", "container-consolidation"],
+  },
+  {
+    slug: "export-documents-checklist",
+    title: "The Export Documents Checklist: Every Paper Your Shipment Needs",
+    description:
+      "The complete checklist of export and import documents — commercial invoice, packing list, bill of lading, certificate of origin, health and food-safety certificates — and the discrepancies that strand shipments.",
+    excerpt:
+      "In international trade the paperwork is the shipment. A flawless container with the wrong documents goes nowhere. Here's every document you need, and why.",
+    date: "2026-04-14",
+    author: "Navvic Trade Desk",
+    readingTime: 8,
+    category: "Compliance",
+    tags: ["Export documents", "Bill of lading", "Commercial invoice", "Documentation"],
+    keywords: [
+      "export documents",
+      "export documentation checklist",
+      "import documents required",
+      "commercial invoice",
+      "bill of lading",
+      "certificate of origin",
+    ],
+    relatedTools: ["docs", "compliance", "hs-code"],
+    relatedPosts: ["customs-clearance-guide", "letters-of-credit"],
+  },
+  {
+    slug: "demurrage-and-detention",
+    title: "Demurrage & Detention: How to Stop Bleeding Money at the Port",
+    description:
+      "The difference between demurrage and detention, how free time and escalating daily charges work, the root causes (almost all preventable), and how to stop these fees before the clock ever starts.",
+    excerpt:
+      "Demurrage and detention appear out of nowhere and compound daily. They're also among the most avoidable costs in importing. Here's how to never pay them.",
+    date: "2026-05-12",
+    author: "Abhinav Srivastava",
+    readingTime: 7,
+    category: "Costing",
+    tags: ["Demurrage", "Detention", "Port charges", "Free time"],
+    keywords: [
+      "demurrage and detention",
+      "what is demurrage",
+      "demurrage vs detention",
+      "avoid demurrage charges",
+      "container free time",
+      "port storage charges",
+    ],
+    relatedTools: ["duty", "compliance", "freight"],
+    relatedPosts: ["customs-clearance-guide", "bonded-warehousing-guide"],
+  },
+  {
+    slug: "ocean-freight-rates-2026",
+    title: "Ocean Freight Rates in 2026: What's Driving Costs and How to Lock Them In",
+    description:
+      "What actually drives ocean freight rates in 2026 — capacity, geopolitics, fuel and seasonality — the spot-vs-contract decision, and how to protect your landed cost from the swings.",
+    excerpt:
+      "Ocean rates can double in a quarter and sag for a year. You can't forecast them — but you can stop them from wrecking your margin. Here's how.",
+    date: "2026-05-29",
+    author: "Abhishek Rathi",
+    readingTime: 8,
+    category: "Freight",
+    tags: ["Ocean freight", "Freight rates", "Spot rates", "Contract rates"],
+    keywords: [
+      "ocean freight rates",
+      "ocean freight rates 2026",
+      "shipping container rates",
+      "spot vs contract freight",
+      "freight rate forecast",
+      "reduce freight costs",
+    ],
+    relatedTools: ["freight", "duty", "hs-code"],
+    relatedPosts: ["container-consolidation", "fcl-vs-lcl-vs-air"],
+  },
+  {
+    slug: "letters-of-credit",
+    title: "Letters of Credit Explained: Getting Paid (and Paying) Safely in Global Trade",
+    description:
+      "How letters of credit solve the trust problem in international trade — how they work step by step, the types you'll meet, and the document discrepancies that cause most first-time rejections.",
+    excerpt:
+      "A buyer and seller who'll never meet must swap a container for a large sum, and neither wants to go first. The letter of credit is how strangers trade safely.",
+    date: "2026-04-28",
+    author: "Navvic Trade Desk",
+    readingTime: 9,
+    category: "Trade terms",
+    tags: ["Letter of credit", "Payment", "Trade finance", "Documentation"],
+    keywords: [
+      "letter of credit",
+      "letter of credit explained",
+      "how does a letter of credit work",
+      "documentary credit",
+      "L/C discrepancies",
+      "trade finance",
+    ],
+    relatedTools: ["docs", "incoterms", "duty"],
+    relatedPosts: ["export-documents-checklist", "incoterms-2020-guide"],
+  },
 ];
 
 /** Maps each post slug to its body component. */
@@ -155,6 +371,15 @@ const bodies: Record<string, ComponentType> = {
   "incoterms-2020-guide": Incoterms2020Guide,
   "fcl-vs-lcl-vs-air": FclVsLclVsAir,
   "sourcing-fmcg-brands": SourcingFmcgBrands,
+  "bonded-warehousing-guide": BondedWarehousingGuide,
+  "cold-chain-shipping": ColdChainShipping,
+  "customs-clearance-guide": CustomsClearanceGuide,
+  "container-consolidation": ContainerConsolidation,
+  "choosing-a-freight-forwarder": ChoosingFreightForwarder,
+  "export-documents-checklist": ExportDocumentsChecklist,
+  "demurrage-and-detention": DemurrageDetention,
+  "ocean-freight-rates-2026": OceanFreightRates2026,
+  "letters-of-credit": LettersOfCredit,
 };
 
 export function getPost(slug: string): BlogPost | undefined {
